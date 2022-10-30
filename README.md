@@ -1,10 +1,18 @@
-# my_cpp_empty_project
+# Qt-begin
 
 ## how to use it
 ```bash
 # clone repository and submodule
 
-git clone --recursive https://github.com/StoneHappy/my_cpp_empty_project.git
+git clone --recursive https://github.com/StoneHappy/Qt-begin.git
+
+# Windows
+
+# for example: add ``D:\softwares\Qt\5.15.2\msvc2015_64\bin`` ``Env Path``;
+
+# ubuntu
+
+# sudo apt-get install qt5-default
 
 # create buid dir
 
