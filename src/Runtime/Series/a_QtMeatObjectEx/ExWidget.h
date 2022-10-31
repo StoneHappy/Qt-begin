@@ -1,7 +1,8 @@
-#ifndef EXWIDGET_H
+﻿#ifndef EXWIDGET_H
 #define EXWIDGET_H
 
 #include <QWidget>
+#include <qobjectdefs.h>
 
 namespace Ui {
 class ExWidget;
@@ -14,6 +15,14 @@ class ExWidget : public QWidget
 public:
     explicit ExWidget(QWidget *parent = nullptr);
     ~ExWidget();
+private slots:
+    void onAgeChange(int val);       //自定义的槽函数
+    void onSpinValChange(int val);
+
+    void onBtnClear();               //UI界面的槽函数
+    void onBtnBoyInc();
+    void onBtnGrilInc();
+    void onClassInfo();
 
 private:
     Ui::ExWidget *ui;
