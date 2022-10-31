@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <qobjectdefs.h>
-
+#include "ExPerson.h"
 namespace Ui {
 class ExWidget;
 }
@@ -26,6 +26,9 @@ private slots:
 
 private:
     Ui::ExWidget *ui;
+
+    ExPerson* m_boy;
+    ExPerson* m_girl;
 };
 
 #endif // EXWIDGET_H
