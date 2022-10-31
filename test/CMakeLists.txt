@@ -34,3 +34,5 @@ add_test(
     NAME ${TARGET_NAME}
     COMMAND ${TARGET_NAME}
 )
+
+COPYQTDLL(${TARGET_NAME} "Core;Gui;Widgets")

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <Series/index.h>
-TEST(QtBegine, a_QtMeatObjectEx)
+TEST(QtBegin, a_QtMeatObjectEx)
 {
-	QtBegine::a_QtMetaObjectEx::main(0, nullptr);
+	QtBegin::a_QtMetaObjectEx::main(0, nullptr);
 }

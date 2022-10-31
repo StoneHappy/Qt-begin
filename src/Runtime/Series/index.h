@@ -1,7 +1,7 @@
 #include "a_QtMeatObjectEx/exwidget.h"
 #include <qapplication.h>
 
-namespace QtBegine {
+namespace QtBegin {
     namespace a_QtMetaObjectEx {
         int main(int argc, char *argv[])
         {

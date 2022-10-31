@@ -10,7 +10,7 @@ macro(SUBDIRLIST result curdir)
 endmacro()
 
 
-macro(COPYQTDLL TARGET QTTARGETS)
+macro(COPYQTDLL TARGET_NAME QTTARGETS)
     if (WIN32)
         set(DEBUG_SUFFIX)
         if (CMAKE_BUILD_TYPE MATCHES "Debug")
@@ -24,19 +24,19 @@ macro(COPYQTDLL TARGET QTTARGETS)
             endif ()
         endif ()
         if (EXISTS "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
-            add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
                     COMMAND ${CMAKE_COMMAND} -E make_directory
-                    "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
-            add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+                    "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins/platforms/")
+            add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
                     COMMAND ${CMAKE_COMMAND} -E copy
                     "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll"
-                    "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
+                    "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins/platforms/")
         endif ()
         foreach (QT_LIB ${QTTARGETS})
-            add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
                     COMMAND ${CMAKE_COMMAND} -E copy
                     "${QT_INSTALL_PATH}/bin/Qt5${QT_LIB}${DEBUG_SUFFIX}.dll"
-                    "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
+                    "$<TARGET_FILE_DIR:${TARGET_NAME}>")
         endforeach (QT_LIB)
     endif ()
 endmacro()
