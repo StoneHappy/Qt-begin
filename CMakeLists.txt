@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 project(QtBegin VERSION 0.1.0)
 
 
-option(ENABLE_TEST "Enable google test" OFF)
+option(ENABLE_TEST "Enable google test" ON)
 option(ENABLE_DOCS "Enable doxygen docs" ON)
 
 
@@ -29,7 +29,7 @@ if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
       "In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
   )
 endif()
-set(CMAKE_PREFIX_PATH "D:/softwares/QT5/5.15.1/msvc2019_64")
+# set(CMAKE_PREFIX_PATH "D:/softwares/Qt/5.15.2/msvc2015_64")
 set(${PROJECT_NAME}_ROOT_DIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_INSTALL_PREFIX "${PROJECT_NAME}_ROOT_DIR/bin")
 set(BINARY_ROOT_DIR "${CMAKE_INSTALL_PREFIX}/")
@@ -42,6 +42,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/bin)
 # vendors dir
 set(VENDORS_DIR ${CMAKE_SOURCE_DIR}/src/Vendors)
 
+
+find_package(Qt5 COMPONENTS                  # 查找 Qt5 的如下库
+        Core
+        Gui
+        Widgets
+        REQUIRED)
 
 add_subdirectory(src)
 
