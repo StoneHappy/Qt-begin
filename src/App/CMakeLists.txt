@@ -21,7 +21,12 @@ set_target_properties(${TARGET_NAME} PROPERTIES FOLDER ${PROJECT_NAME})
 
 target_compile_options(${TARGET_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/WX->")
 
-target_link_libraries(${TARGET_NAME} ${PROJECT_NAME}Runtime)
+target_link_libraries(${TARGET_NAME} 
+${PROJECT_NAME}Runtime
+Qt5::Core
+Qt5::Gui
+Qt5::Widgets
+)
 
 target_include_directories(
   ${TARGET_NAME} 
@@ -37,3 +42,4 @@ target_include_directories(
 # COMMAND ${CMAKE_COMMAND} -E remove_directory "${BINARY_ROOT_DIR}/${ENGINE_ASSET_DIR}"
 # COMMAND ${CMAKE_COMMAND} -E copy_directory "${ENGINE_ROOT_DIR}/${ENGINE_ASSET_DIR}" "${BINARY_ROOT_DIR}/${ENGINE_ASSET_DIR}"
 # )
+COPYQTDLL(${TARGET_NAME} "Core;Gui;Widgets")
