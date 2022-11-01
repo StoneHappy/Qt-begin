@@ -4,3 +4,8 @@ TEST(QtBegin, a_QtMeatObjectEx)
 {
 	QtBegin::a_QtMetaObjectEx::main(0, nullptr);
 }
+
+TEST(QtBegin, b_QStringEx)
+{
+	QtBegin::b_QStringEx::main(0, nullptr);
+}
