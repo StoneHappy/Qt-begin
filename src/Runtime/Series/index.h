@@ -1,6 +1,7 @@
 #include "a_QtMeatObjectEx/ExWidget.h"
 #include "b_QStringEx/ExQString.h"
 #include "c_QtQStringFunEx/ExQStringFun.h"
+#include "d_ExQSlider/ExQSlider.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -41,6 +42,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExQStringFun w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace d_ExQSlider {
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExQSlider w;
 
             w.show();
 

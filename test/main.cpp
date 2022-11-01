@@ -14,3 +14,8 @@ TEST(QtBegin, c_QtQStringFunEx)
 {
 	QtBegin::c_QtQStringFunEx::main(0, nullptr);
 }
+
+TEST(QtBegin, d_ExQSlider)
+{
+	QtBegin::d_ExQSlider::main(0, nullptr);
+}

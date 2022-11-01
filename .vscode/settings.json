@@ -5,6 +5,6 @@
     ],
     "cmake.generator": "Ninja",
     "cmake.debugConfig": {
-        "args": ["--gtest_filter=QtBegin.c_QtQStringFunEx"]
+        "args": ["--gtest_filter=QtBegin.d_ExQSlider"]
     }
 }
