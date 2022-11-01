@@ -86,3 +86,36 @@ void ExQStringFun::on_btnTrimmed_clicked()
     QString strRet = str1.trimmed();
     ui->editResult->setText(strRet);
 }
+
+
+void ExQStringFun::on_btnCount_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString strRet = QString("count():%1").arg(str1.count());
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnSize_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString strRet = QString("count():%1").arg(str1.size());
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnIndexOf_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString str2 = ui->comboxStr2->currentText();
+
+    QString strRet = QString("IndexOf():%1").arg(str1.indexOf(str2));
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnLastIndexOf_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString str2 = ui->comboxStr2->currentText();
+
+    QString strRet = QString("lastIndexOf():%1").arg(str1.lastIndexOf(str2));
+    ui->editResult->setText(strRet);
+}

@@ -16,6 +16,7 @@ public:
     ~ExQStringFun();
 
 private slots:
+    // String related
     void on_btnAppend_clicked();
     void on_btnPrepend_clicked();
     void on_btnToUpper_clicked();
@@ -25,6 +26,12 @@ private slots:
     void on_btnSection_clicked();
     void on_btnSimplified_clicked();
     void on_btnTrimmed_clicked();
+
+    // Number relaed
+    void on_btnCount_clicked();
+    void on_btnSize_clicked();
+    void on_btnIndexOf_clicked();
+    void on_btnLastIndexOf_clicked();
 
 private:
     Ui::ExQStringFun *ui;
