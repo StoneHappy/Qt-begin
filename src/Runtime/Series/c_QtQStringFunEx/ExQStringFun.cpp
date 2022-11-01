@@ -1,4 +1,4 @@
-#include "ExQStringFun.h"
+﻿#include "ExQStringFun.h"
 #include "ui_ExQStringFun.h"
 
 ExQStringFun::ExQStringFun(QWidget *parent) :
@@ -117,5 +117,78 @@ void ExQStringFun::on_btnLastIndexOf_clicked()
     QString str2 = ui->comboxStr2->currentText();
 
     QString strRet = QString("lastIndexOf():%1").arg(str1.lastIndexOf(str2));
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnStartsWith_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString str2 = ui->comboxStr2->currentText();
+    QString str3 = "";
+
+    if (str1.startsWith(str2))
+        str3 = QString::fromLocal8Bit("str1是以str2字符串开头");
+    else
+        str3 = QString::fromLocal8Bit("str1不是以str2字符串开头");
+
+    QString strRet = QString("startsWith():%1").arg(str3);
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnEndsWith_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString str2 = ui->comboxStr2->currentText();
+    QString str3 = "";
+
+    if (str1.endsWith(str2))
+        str3 = QString::fromLocal8Bit("str1是以str2字符串开头");
+    else
+        str3 = QString::fromLocal8Bit("str1不是以str2字符串开头");
+
+    QString strRet = QString("startsWith():%1").arg(str3);
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnContains_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString str2 = ui->comboxStr2->currentText();
+    QString str3 = "";
+
+    if (str1.contains(str2))
+        str3 = QString::fromLocal8Bit("str1字符中包含str2字符串");
+    else
+        str3 = QString::fromLocal8Bit("str1字符中不包含str2字符串");
+
+    QString strRet = QString("contains():%1").arg(str3);
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnIsNull_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString str = "未赋值";
+
+    if(str1.isNull())
+        str = "true";
+    else
+        str = "false";
+
+    QString strRet = QString("str1.isNull() => %1").arg(str);
+    ui->editResult->setText(strRet);
+}
+
+void ExQStringFun::on_btnIsEmpty_clicked()
+{
+    QString str1 = ui->comboxStr1->currentText();
+    QString str = "未赋值";
+
+    if(str1.isNull())
+        str = "true";
+    else
+        str = "false";
+
+    QString strRet = QString("str1.isEmpty() => %1").arg(str);
     ui->editResult->setText(strRet);
 }

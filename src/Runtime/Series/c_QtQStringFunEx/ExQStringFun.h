@@ -27,12 +27,20 @@ private slots:
     void on_btnSimplified_clicked();
     void on_btnTrimmed_clicked();
 
-    // Number relaed
+    // Number related
     void on_btnCount_clicked();
     void on_btnSize_clicked();
     void on_btnIndexOf_clicked();
     void on_btnLastIndexOf_clicked();
 
+    // logic related
+    void on_btnStartsWith_clicked();
+    void on_btnEndsWith_clicked();
+    void on_btnContains_clicked();
+    void on_btnIsNull_clicked();
+    void on_btnIsEmpty_clicked();
+
+    
 private:
     Ui::ExQStringFun *ui;
 };
