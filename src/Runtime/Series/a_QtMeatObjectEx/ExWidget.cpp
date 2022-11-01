@@ -2,9 +2,11 @@
 #include "Series/a_QtMeatObjectEx/ExPerson.h"
 #include "ui_ExWidget.h"
 #include <qglobal.h>
+#include <qmetaobject.h>
 #include <qobject.h>
 #include <qobjectdefs.h>
 #include <qspinbox.h>
+#include <QMetaProperty>
 
 ExWidget::ExWidget(QWidget *parent) :
     QWidget(parent),
@@ -83,4 +85,19 @@ void ExWidget::onClassInfo()
     ui->textEdit->appendPlainText(QString::fromLocal8Bit("===元对象信息(Meta Object)==="));
     ui->textEdit->appendPlainText(QString::fromLocal8Bit("类名称: %1\n").arg(meta->className()));
     ui->textEdit->appendPlainText(QString::fromLocal8Bit("属性(property)"));
+
+    for (int i = meta->propertyOffset(); i < meta->propertyCount(); i++) {
+        QMetaProperty prop = meta->property(i);
+        const char* propName = prop.name();
+        QString propValue = m_boy->property(propName).toString();
+        ui->textEdit->appendPlainText(QString::fromLocal8Bit("属性名称=%1， 属性值= %2").arg(propName).arg(propValue));
+    }
+
+    ui->textEdit->appendPlainText("");
+    ui->textEdit->appendPlainText("classInfo: ");
+
+    for (int i = meta->classInfoOffset(); i < meta->classInfoCount(); i++) {
+        QMetaClassInfo classInfo = meta->classInfo(i);
+        ui->textEdit->appendPlainText(QString::fromLocal8Bit("Name= %1, Vuale= %2").arg(classInfo.name()).arg(classInfo.value()));
+    }
 }
