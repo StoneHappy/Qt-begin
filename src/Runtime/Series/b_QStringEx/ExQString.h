@@ -14,7 +14,12 @@ class ExQString : public QWidget
 public:
     explicit ExQString(QWidget *parent = nullptr);
     ~ExQString();
-
+private slots:
+    void on_btnResult_clicked();
+    void on_btn2_clicked();
+    void on_btn8_clicked();
+    void on_btn10_clicked();
+    void on_btn16_clicked();
 private:
     Ui::ExQString *ui;
 };
