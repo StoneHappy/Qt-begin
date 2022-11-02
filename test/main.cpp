@@ -19,3 +19,8 @@ TEST(QtBegin, d_ExQSlider)
 {
 	QtBegin::d_ExQSlider::main(0, nullptr);
 }
+
+TEST(QtBegin, e_ExQProgressBar)
+{
+	QtBegin::e_ExQProgressBar::main(0, nullptr);
+}
