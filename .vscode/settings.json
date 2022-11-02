@@ -5,6 +5,6 @@
     ],
     "cmake.generator": "Ninja",
     "cmake.debugConfig": {
-        "args": ["--gtest_filter=QtBegin.e_ExQProgressBar"]
+        "args": ["--gtest_filter=QtBegin.f_ExQdialQLCD"]
     }
 }

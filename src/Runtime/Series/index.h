@@ -3,6 +3,7 @@
 #include "b_QStringEx/ExQString.h"
 #include "c_QtQStringFunEx/ExQStringFun.h"
 #include "d_ExQSlider/ExQSlider.h"
+#include "f_ExQdialQLCD/ExQdialQLCD.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -73,6 +74,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExQProgressBar w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace f_ExQdialQLCD {
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExQdialQLCD w;
 
             w.show();
 

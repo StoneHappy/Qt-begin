@@ -24,3 +24,8 @@ TEST(QtBegin, e_ExQProgressBar)
 {
 	QtBegin::e_ExQProgressBar::main(0, nullptr);
 }
+
+TEST(QtBegin, f_ExQdialQLCD)
+{
+	QtBegin::f_ExQdialQLCD::main(0, nullptr);
+}
