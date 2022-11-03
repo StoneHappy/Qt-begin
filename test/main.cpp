@@ -29,3 +29,8 @@ TEST(QtBegin, f_ExQdialQLCD)
 {
 	QtBegin::f_ExQdialQLCD::main(0, nullptr);
 }
+
+TEST(QtBegin, g_ExDateTime)
+{
+	QtBegin::g_ExDateTime::main(0, nullptr);
+}

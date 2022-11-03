@@ -4,6 +4,7 @@
 #include "c_QtQStringFunEx/ExQStringFun.h"
 #include "d_ExQSlider/ExQSlider.h"
 #include "f_ExQdialQLCD/ExQdialQLCD.h"
+#include "g_ExDateTime/ExDateTime.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -89,6 +90,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExQdialQLCD w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace g_ExDateTime {
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExDateTime w;
 
             w.show();
 
