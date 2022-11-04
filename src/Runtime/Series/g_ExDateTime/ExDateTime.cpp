@@ -88,3 +88,9 @@ void ExDateTime::onTimerOut()
 
     ui->progressBar->setValue(val);
 }
+
+void ExDateTime::on_calendarWidget_selectionChanged()
+{
+    QDate date = ui->calendarWidget->selectedDate();
+    ui->editChoose->setText(date.toString(QString::fromLocal8Bit("yyyy年MM月dd日")));
+}

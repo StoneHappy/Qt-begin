@@ -23,6 +23,7 @@ private slots:
     void on_btnStatrt_clicked();
     void on_btnStop_clicked();
     void on_btnPeriod_clicked();
+    void on_calendarWidget_selectionChanged();
 
     void onTimerOut();   //处理计时器的信号的槽函数
 
