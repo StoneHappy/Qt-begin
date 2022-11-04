@@ -5,6 +5,7 @@
 #include "d_ExQSlider/ExQSlider.h"
 #include "f_ExQdialQLCD/ExQdialQLCD.h"
 #include "g_ExDateTime/ExDateTime.h"
+#include "h_ExQcomboBox/ExQcomboBox.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -105,6 +106,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExDateTime w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace h_ExQcomboBox {
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExQcomboBox w;
 
             w.show();
 
