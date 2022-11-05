@@ -41,7 +41,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/bin)
 # vendors dir
 set(VENDORS_DIR ${CMAKE_SOURCE_DIR}/src/Vendors)
-
+set(QRCFILE ${CMAKE_SOURCE_DIR}/resources/resources.qrc)
 
 find_package(Qt5 COMPONENTS                  # 查找 Qt5 的如下库
         Core

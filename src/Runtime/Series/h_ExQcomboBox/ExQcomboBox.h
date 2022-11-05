@@ -15,6 +15,9 @@ public:
     explicit ExQcomboBox(QWidget *parent = nullptr);
     ~ExQcomboBox();
 
+private slots:
+    void on_btnLeftInit_clicked();
+
 private:
     Ui::ExQcomboBox *ui;
 };
