@@ -23,15 +23,11 @@ macro(COPYQTDLL TARGET_NAME QTTARGETS)
                 set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
             endif ()
         endif ()
-        if (EXISTS "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
-            add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E make_directory
-                    "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins/platforms/")
-            add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E copy
-                    "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll"
-                    "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins/platforms/")
-        endif ()
+        
+        add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "${QT_INSTALL_PATH}/plugins"
+                "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins")
         foreach (QT_LIB ${QTTARGETS})
             add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
                     COMMAND ${CMAKE_COMMAND} -E copy
