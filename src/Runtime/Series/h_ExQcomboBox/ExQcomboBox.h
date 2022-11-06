@@ -17,6 +17,13 @@ public:
 
 private slots:
     void on_btnLeftInit_clicked();
+    void on_btnRightInit_clicked();
+    void on_btnBottomClear_clicked();
+    void on_btnLeftClear_clicked();
+    void on_checkBoxOnlyWrite_clicked();
+    void onSelectDisplay(QString str);
+    void on_btnBottomAdd_clicked();
+    void on_checkBoxOnlyRead_clicked();
 
 private:
     Ui::ExQcomboBox *ui;

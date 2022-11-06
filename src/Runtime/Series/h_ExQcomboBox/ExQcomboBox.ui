@@ -121,7 +121,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="btnBottomAdd">
           <property name="text">
            <string>文本框内容添加到ComboBox</string>
           </property>
@@ -145,6 +145,13 @@
       </item>
       <item>
        <widget class="QPlainTextEdit" name="plainTextEdit"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="labDisplay">
+        <property name="text">
+         <string>显示当前的Item项：</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
