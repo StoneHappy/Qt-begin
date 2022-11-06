@@ -6,12 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>840</width>
+    <width>961</width>
     <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normalon>:/images/qt.ico</normalon>
+   </iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -49,15 +54,30 @@
            <property name="text">
             <string>默认的第一个item：投我以木李</string>
            </property>
+           <property name="icon">
+            <iconset>
+             <normalon>:/images/github.ico</normalon>
+            </iconset>
+           </property>
           </item>
           <item>
            <property name="text">
             <string>默认的第二个item：报之以琼玖</string>
            </property>
+           <property name="icon">
+            <iconset>
+             <disabledon>:/images/github.ico</disabledon>
+            </iconset>
+           </property>
           </item>
           <item>
            <property name="text">
             <string>github.io：https://touwoyimuli.github.io/</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <disabledon>:/images/github.ico</disabledon>
+            </iconset>
            </property>
           </item>
          </widget>
@@ -131,6 +151,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
