@@ -39,3 +39,8 @@ TEST(QtBegin, h_ExQcomboBox)
 {
 	QtBegin::h_ExQcomboBox::main(0, nullptr);
 }
+
+TEST(QtBegin, i_ExQListWidget)
+{
+	QtBegin::i_ExQListWidget::main(0, nullptr);
+}

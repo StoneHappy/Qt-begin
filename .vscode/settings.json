@@ -5,6 +5,6 @@
     ],
     "cmake.generator": "Ninja",
     "cmake.debugConfig": {
-        "args": ["--gtest_filter=QtBegin.h_ExQcomboBox"]
+        "args": ["--gtest_filter=QtBegin.i_ExQListWidget"]
     }
 }
