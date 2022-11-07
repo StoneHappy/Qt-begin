@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>799</width>
-    <height>600</height>
+    <width>991</width>
+    <height>802</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>761</width>
-      <height>471</height>
+      <width>615</width>
+      <height>318</height>
      </rect>
     </property>
     <property name="orientation">
@@ -28,15 +28,15 @@
     </property>
     <widget class="QToolBox" name="toolBox">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="pageList">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>278</width>
-        <height>366</height>
+        <width>150</width>
+        <height>213</height>
        </rect>
       </property>
       <attribute name="icon">
@@ -46,14 +46,51 @@
       <attribute name="label">
        <string>QListWidget展示</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>toolBtnInit</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>toolBtnClear</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>toolBtnInsert</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="text">
+          <string>toolBtnAdd</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="text">
+          <string>toolBtnDelete</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="pageTree">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>278</width>
-        <height>366</height>
+        <width>196</width>
+        <height>192</height>
        </rect>
       </property>
       <attribute name="icon">
@@ -63,8 +100,53 @@
       <attribute name="label">
        <string>QTreeWidget展示</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>GroupBox</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>此处没有实现任何功能</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEditLeft"/>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBoxLeft"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>44</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="pageTable">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>150</width>
+        <height>213</height>
+       </rect>
+      </property>
       <attribute name="icon">
        <iconset resource="../../../../resources/resources.qrc">
         <normaloff>:/images/Table.png</normaloff>:/images/Table.png</iconset>
@@ -72,11 +154,24 @@
       <attribute name="label">
        <string>QTableWidget展示</string>
       </attribute>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>90</y>
+         <width>211</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>此处连布局都没有</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabList">
       <attribute name="icon">
@@ -86,6 +181,92 @@
       <attribute name="title">
        <string>QListWidget</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>当前项的变化：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox">
+           <property name="text">
+            <string>可编辑</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="pushButton_6">
+           <property name="text">
+            <string>tBtnSelectItem</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_7">
+           <property name="text">
+            <string>tBtnSelAll</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="text">
+            <string>tBtnSelNone</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_9">
+           <property name="text">
+            <string>tBtnSelInvs</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listWidget">
+         <property name="textElideMode">
+          <enum>Qt::ElideLeft</enum>
+         </property>
+         <item>
+          <property name="text">
+           <string>this is first item</string>
+          </property>
+          <property name="checkState">
+           <enum>Unchecked</enum>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../../resources/resources.qrc">
+            <normaloff>:/images/github.png</normaloff>:/images/github.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>这是第二个项item</string>
+          </property>
+          <property name="checkState">
+           <enum>Unchecked</enum>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../../resources/resources.qrc">
+            <normaloff>:/images/gril.png</normaloff>:/images/gril.png</iconset>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tabTree">
       <attribute name="icon">
@@ -95,6 +276,15 @@
       <attribute name="title">
        <string>QTreeWidget</string>
       </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="text">
+          <string>这里什么都没有，只有一个布局，此页面也没有实现任何功能</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tabTable">
       <attribute name="icon">
@@ -104,6 +294,19 @@
       <attribute name="title">
        <string>QTableWidget</string>
       </attribute>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>100</y>
+         <width>221</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>这里什么都没有，连布局都没有</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -113,7 +316,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>799</width>
+     <width>991</width>
      <height>26</height>
     </rect>
    </property>
