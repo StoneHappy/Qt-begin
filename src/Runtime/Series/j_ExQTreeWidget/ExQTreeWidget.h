@@ -36,6 +36,10 @@ private slots:
     void on_actAddFile_triggered();
     void on_actAdaptiveHeight_triggered();
     void on_treeFiles_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+    void on_actAmplification_triggered();
+    void on_actShrink_triggered();
+    void on_actZoomRealSize_triggered();
+    void on_actAdaptiveWidth_triggered();
 
 private:
     void initTree();

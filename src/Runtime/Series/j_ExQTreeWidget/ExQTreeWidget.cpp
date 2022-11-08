@@ -14,7 +14,7 @@ ExQTreeWidget::ExQTreeWidget(QWidget *parent) :
 
     setWindowTitle(QString::fromLocal8Bit("QTreeWidget和QDockWidget的讲解和使用"));
 
-    setCentralWidget(ui->scrollArea);
+    setCentralWidget(ui->scrollArea); 
     initTree();
     m_labFlie = new QLabel(QString::fromLocal8Bit("当前文件的路径:"), this);
     ui->statusbar->addWidget(m_labFlie);
@@ -121,6 +121,51 @@ void ExQTreeWidget::on_actAdaptiveHeight_triggered()
 
     QPixmap pixmap = m_curPixmap.scaledToHeight(height - 50);     //图片缩放到指定高度
     ui->labDisplay->setPixmap(pixmap);                            //设置Label的PixMap
+}
+
+//图片自动适应宽度
+void ExQTreeWidget::on_actAdaptiveWidth_triggered()
+{
+    int width = ui->scrollArea->width();
+    int realWidth = m_curPixmap.width();
+    m_ratio = width * 1.0 / realWidth;
+
+    QPixmap pixmap = m_curPixmap.scaledToHeight(width - 50);
+    ui->labDisplay->setPixmap(pixmap);
+}
+
+//放大
+void ExQTreeWidget::on_actAmplification_triggered()
+{
+    m_ratio *= 1.2;                                             //在当前比例基础上乘以0.8
+    int height = m_curPixmap.height() * m_ratio;                // 显示宽度
+    int widht = m_curPixmap.width() * m_ratio;                  // 显示宽度
+
+    QPixmap pix = m_curPixmap.scaled(widht, height);            //图片缩放到指定高度和宽度，保持长宽比例
+    ui->labDisplay->setPixmap(pix);
+
+}
+
+//缩小
+void ExQTreeWidget::on_actShrink_triggered()
+{
+    m_ratio *= 0.8;
+    int height = m_curPixmap.height() * m_ratio;
+    int widht = m_curPixmap.width() * m_ratio;
+
+    QPixmap pix = m_curPixmap.scaled(widht, height);
+    ui->labDisplay->setPixmap(pix);
+}
+
+//还原
+void ExQTreeWidget::on_actZoomRealSize_triggered()
+{
+    m_ratio = 1;
+    int height = m_curPixmap.height();
+    int widht = m_curPixmap.width();
+
+    QPixmap pix = m_curPixmap.scaled(widht, height);
+    ui->labDisplay->setPixmap(pix);
 }
 
 void ExQTreeWidget::on_treeFiles_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
