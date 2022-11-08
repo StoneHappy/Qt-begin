@@ -7,6 +7,7 @@
 #include "g_ExDateTime/ExDateTime.h"
 #include "h_ExQcomboBox/ExQcomboBox.h"
 #include "i_ExQListWidget/ExQListWidget.h"
+#include "j_ExQTreeWidget/ExQTreeWidget.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -137,6 +138,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExQListWidget w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace j_ExQTreeWidget {
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExQTreeWidget w;
 
             w.show();
 

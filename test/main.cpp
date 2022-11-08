@@ -44,3 +44,8 @@ TEST(QtBegin, i_ExQListWidget)
 {
 	QtBegin::i_ExQListWidget::main(0, nullptr);
 }
+
+TEST(QtBegin, j_ExQTreeWidget)
+{
+	QtBegin::j_ExQTreeWidget::main(0, nullptr);
+}
