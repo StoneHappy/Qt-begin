@@ -31,7 +31,7 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="labDisplay">
           <property name="text">
            <string/>
           </property>
@@ -124,7 +124,7 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QTreeWidget" name="treeWidget">
+      <widget class="QTreeWidget" name="treeFiles">
        <column>
         <property name="text">
          <string>节点</string>
