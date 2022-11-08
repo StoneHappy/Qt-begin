@@ -175,6 +175,24 @@ void ExQTreeWidget::on_treeFiles_currentItemChanged(QTreeWidgetItem *current, QT
     }
 }
 
+//设置Dock窗口是否浮动
+void ExQTreeWidget::on_actDockFloating_triggered(bool check)
+{
+    ui->dockWidget->setFloating(check);
+}
+
+//设置Dock窗口是否隐藏不显示
+void ExQTreeWidget::on_actDockVisible_triggered(bool checked)
+{
+    ui->dockWidget->setVisible(!checked);
+}
+
+//退出
+void ExQTreeWidget::on_actQiut_triggered()
+{
+    close();
+}
+
 void ExQTreeWidget::displayImage(QTreeWidgetItem* item)
 {
     QString fileName = item->data(treeColNum::colItem, Qt::UserRole).toString();

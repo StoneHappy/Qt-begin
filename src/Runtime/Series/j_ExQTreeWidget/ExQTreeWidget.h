@@ -40,6 +40,9 @@ private slots:
     void on_actShrink_triggered();
     void on_actZoomRealSize_triggered();
     void on_actAdaptiveWidth_triggered();
+    void on_actDockFloating_triggered(bool check);
+    void on_actDockVisible_triggered(bool checked);
+    void on_actQiut_triggered();
 
 private:
     void initTree();
