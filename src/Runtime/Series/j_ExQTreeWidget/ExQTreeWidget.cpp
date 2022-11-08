@@ -4,6 +4,7 @@
 #include <qnamespace.h>
 #include <qtreewidget.h>
 #include <qvariant.h>
+#include <QFileDialog>
 
 ExQTreeWidget::ExQTreeWidget(QWidget *parent) :
     QMainWindow(parent),
@@ -39,6 +40,54 @@ void ExQTreeWidget::initTree()
     ui->treeFiles->addTopLevelItem(root);
 }
 
+//添加目录节点
+void ExQTreeWidget::addFolderItem(QTreeWidgetItem *parItem, QString dirName)
+{
+    QIcon icon;
+    icon.addFile(":/image/Image006.jpg");
+
+    //添加一个新的节点
+    QTreeWidgetItem* item = new QTreeWidgetItem(treeItemType::itemFile);
+    QString folderName = getFinalFolderName(dirName);
+    item->setIcon(treeColNum::colItem, icon);
+    item->setText(treeColNum::colItem, folderName);
+    item->setText(treeColNum::colItemType, QString("treeItemType"));
+    item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsAutoTristate);
+    item->setCheckState(treeColNum::colItem, Qt::Unchecked);
+    item->setData(treeColNum::colItem, Qt::UserRole, QVariant(dirName));
+
+    //添加子节点
+    if (parItem->type() == treeItemType::itemFile) {                 //若是文件节点
+        parItem->addChild(item);
+    } else if (parItem->type() == treeItemType::itemRoot) {          //若是唯一root节点
+        QTreeWidgetItem *root = ui->treeFiles->topLevelItem(0);
+        root->addChild(item);
+    }
+
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//增加文件夹
+void ExQTreeWidget::on_actAddFolder_triggered()
+{
+    QString path = QFileDialog::getExistingDirectory();             //选择目录
+    if (! path.isEmpty()) {
+        QTreeWidgetItem* item = ui->treeFiles->currentItem();       //获取当前节点
+
+        if(item != nullptr)
+            addFolderItem(item, path);
+    }
+}
+
+//从完整的路径里面，获取最后的文件夹名称
+QString ExQTreeWidget::getFinalFolderName(const QString &pathName)
+{
+    QString path = pathName;
+    int cnt = pathName.count();
+    int i = pathName.lastIndexOf("/");
+    QString str = pathName.right(cnt - i - 1);
+    return str;
+}
 
 ExQTreeWidget::~ExQTreeWidget()
 {

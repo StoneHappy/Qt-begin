@@ -8,6 +8,8 @@ namespace Ui {
 class ExQTreeWidget;
 }
 
+class QTreeWidgetItem;
+
 class ExQTreeWidget : public QMainWindow
 {
     Q_OBJECT
@@ -29,7 +31,13 @@ public:
     ~ExQTreeWidget();
 
 private slots:
+    void on_actAddFolder_triggered();
+
+private:
     void initTree();
+    void addFolderItem(QTreeWidgetItem *parItem, QString dirName);
+    QString getFinalFolderName(const QString &pathName);
+
 
 private:
     Ui::ExQTreeWidget *ui;
