@@ -9,6 +9,7 @@ class ExQTreeWidget;
 }
 
 class QTreeWidgetItem;
+class QLabel;
 
 class ExQTreeWidget : public QMainWindow
 {
@@ -33,7 +34,8 @@ public:
 private slots:
     void on_actAddFolder_triggered();
     void on_actAddFile_triggered();
-
+    void on_actAdaptiveHeight_triggered();
+    void on_treeFiles_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
 private:
     void initTree();
@@ -41,10 +43,13 @@ private:
     void addImageItem(QTreeWidgetItem *parItem, QString fileName);
 
     QString getFinalFolderName(const QString &pathName);
-
+    void displayImage(QTreeWidgetItem* item);
 
 private:
     Ui::ExQTreeWidget *ui;
+    QLabel *m_labFlie;      //状态栏显示当前文件路径
+    QPixmap m_curPixmap;    //显示当前文件图片
+    float m_ratio;
 };
 
 #endif // EXQTREEWIDGET_H

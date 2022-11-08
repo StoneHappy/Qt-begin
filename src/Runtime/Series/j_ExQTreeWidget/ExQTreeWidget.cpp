@@ -16,7 +16,8 @@ ExQTreeWidget::ExQTreeWidget(QWidget *parent) :
 
     setCentralWidget(ui->scrollArea);
     initTree();
-    
+    m_labFlie = new QLabel(QString::fromLocal8Bit("当前文件的路径:"), this);
+    ui->statusbar->addWidget(m_labFlie);
 }
 
 void ExQTreeWidget::initTree()
@@ -110,6 +111,39 @@ void ExQTreeWidget::on_actAddFile_triggered()
         }
     }
 }
+
+//图片自动适应高度
+void ExQTreeWidget::on_actAdaptiveHeight_triggered()
+{
+    int height = ui->scrollArea->height();                        //得到scrollArea的高度
+    int realHeight = m_curPixmap.height();                        //原始图片的实际高度
+    m_ratio = height * 1.0 / realHeight;                          //当前显示比例，必须转换为浮点数
+
+    QPixmap pixmap = m_curPixmap.scaledToHeight(height - 50);     //图片缩放到指定高度
+    ui->labDisplay->setPixmap(pixmap);                            //设置Label的PixMap
+}
+
+void ExQTreeWidget::on_treeFiles_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+{
+    if (current != nullptr && previous != nullptr) {
+        displayImage(current);
+    }
+}
+
+void ExQTreeWidget::displayImage(QTreeWidgetItem* item)
+{
+    QString fileName = item->data(treeColNum::colItem, Qt::UserRole).toString();
+    m_labFlie->setText(fileName);
+    m_curPixmap.load(fileName);
+    on_actAdaptiveHeight_triggered();
+
+    ui->actAmplification->setEnabled(true);
+    ui->actShrink->setEnabled(true);
+    ui->actZoomRealSize->setEnabled(true);
+    ui->actAdaptiveHeight->setEnabled(true);
+    ui->actAdaptiveWidth->setEnabled(true);
+}
+
 
 //从完整的路径里面，获取最后的文件夹名称
 QString ExQTreeWidget::getFinalFolderName(const QString &pathName)
