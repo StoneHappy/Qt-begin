@@ -56,7 +56,13 @@ void ExQTreeWidget::addFolderItem(QTreeWidgetItem *parItem, QString dirName)
     item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsAutoTristate);
     item->setCheckState(treeColNum::colItem, Qt::Unchecked);
     item->setData(treeColNum::colItem, Qt::UserRole, QVariant(dirName));
-    parItem->addChild(item);
+    //添加子节点
+    if (parItem->type() == treeItemType::itemFile) {                 //若是文件节点
+        parItem->addChild(item);
+    } else if (parItem->type() == treeItemType::itemRoot) {          //若是唯一root节点
+        QTreeWidgetItem *root = ui->treeFiles->topLevelItem(0);
+        root->addChild(item);
+    }
 }
 
 void ExQTreeWidget::addImageItem(QTreeWidgetItem *parItem, QString fileName)
@@ -168,6 +174,23 @@ void ExQTreeWidget::on_actZoomRealSize_triggered()
     ui->labDisplay->setPixmap(pix);
 }
 
+void ExQTreeWidget::on_actDeleFile_triggered()
+{
+    QTreeWidgetItem* parItem = nullptr;
+    QTreeWidgetItem* currItem = ui->treeFiles->currentItem();
+
+    if (currItem->type() != treeItemType::itemRoot)
+        parItem = currItem->parent();                              //只能够由其父节点删除
+//    else
+//        ui->treeFiles->takeTopLevelItem(0);                      //删除顶层节点使用这个
+
+    if (currItem == nullptr || parItem == nullptr)
+        return;
+
+    parItem->removeChild(currItem);                                //移除没有从内存中删除，所以delete删除
+    delete currItem;
+}
+
 void ExQTreeWidget::on_treeFiles_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
 {
     if (current != nullptr && previous != nullptr) {
@@ -175,6 +198,27 @@ void ExQTreeWidget::on_treeFiles_currentItemChanged(QTreeWidgetItem *current, QT
     }
 }
 
+//遍历所有的顶层节点(本处只有一个root顶层节点)
+void ExQTreeWidget::on_actScanItems_triggered()
+{
+    for (int i = 0; i < ui->treeFiles->topLevelItemCount(); i++) {
+        QTreeWidgetItem* currItem = ui->treeFiles->topLevelItem(i); //顶层item
+        changeItemCaption(currItem);
+    }
+}
+//遍历传进来的父节点下的所有子节点；每遍历过该节点，就在其节点的信息加一个#
+void ExQTreeWidget::changeItemCaption(QTreeWidgetItem *parItem)
+{
+    QString str = "# " + parItem->text(treeColNum::colItem);
+    parItem->setText(treeColNum::colItem, str);
+
+    if (parItem->childCount() < 0)
+        return;
+
+    for (int i = 0; i < parItem->childCount(); i++) {
+        changeItemCaption(parItem->child(i));                       //回调，调用自己
+    }
+}
 //设置Dock窗口是否浮动
 void ExQTreeWidget::on_actDockFloating_triggered(bool check)
 {

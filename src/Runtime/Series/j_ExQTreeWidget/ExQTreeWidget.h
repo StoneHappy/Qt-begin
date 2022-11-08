@@ -43,12 +43,14 @@ private slots:
     void on_actDockFloating_triggered(bool check);
     void on_actDockVisible_triggered(bool checked);
     void on_actQiut_triggered();
+    void on_actDeleFile_triggered();
+    void on_actScanItems_triggered();
 
 private:
     void initTree();
     void addFolderItem(QTreeWidgetItem *parItem, QString dirName);
     void addImageItem(QTreeWidgetItem *parItem, QString fileName);
-
+    void changeItemCaption(QTreeWidgetItem *parItem);
     QString getFinalFolderName(const QString &pathName);
     void displayImage(QTreeWidgetItem* item);
 
