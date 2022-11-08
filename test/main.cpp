@@ -49,3 +49,8 @@ TEST(QtBegin, j_ExQTreeWidget)
 {
 	QtBegin::j_ExQTreeWidget::main(0, nullptr);
 }
+
+TEST(QtBegin, k_ExQTableWidget)
+{
+	QtBegin::k_ExQTableWidget::main(0, nullptr);
+}

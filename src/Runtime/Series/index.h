@@ -8,6 +8,7 @@
 #include "h_ExQcomboBox/ExQcomboBox.h"
 #include "i_ExQListWidget/ExQListWidget.h"
 #include "j_ExQTreeWidget/ExQTreeWidget.h"
+#include "k_ExQTableWidget/ExQTableWidget.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -153,6 +154,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExQTreeWidget w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace k_ExQTableWidget {
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExQTableWidget w;
 
             w.show();
 

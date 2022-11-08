@@ -5,6 +5,6 @@
     ],
     "cmake.generator": "Ninja",
     "cmake.debugConfig": {
-        "args": ["--gtest_filter=QtBegin.j_ExQTreeWidget"]
+        "args": ["--gtest_filter=QtBegin.k_ExQTableWidget"]
     }
 }
