@@ -55,14 +55,24 @@ void ExQTreeWidget::addFolderItem(QTreeWidgetItem *parItem, QString dirName)
     item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsAutoTristate);
     item->setCheckState(treeColNum::colItem, Qt::Unchecked);
     item->setData(treeColNum::colItem, Qt::UserRole, QVariant(dirName));
+    parItem->addChild(item);
+}
 
-    //添加子节点
-    if (parItem->type() == treeItemType::itemFile) {                 //若是文件节点
-        parItem->addChild(item);
-    } else if (parItem->type() == treeItemType::itemRoot) {          //若是唯一root节点
-        QTreeWidgetItem *root = ui->treeFiles->topLevelItem(0);
-        root->addChild(item);
-    }
+void ExQTreeWidget::addImageItem(QTreeWidgetItem *parItem, QString fileName)
+{
+    if (parItem == nullptr) return;
+
+    QIcon icon;
+    icon.addFile(":/image/Image014.jpg");
+
+    QTreeWidgetItem* item = new QTreeWidgetItem(treeItemType::itemImage);
+    QString folderName = getFinalFolderName(fileName);
+    item->setIcon(treeColNum::colItem, icon);
+    item->setText(treeColNum::colItem, folderName);
+    item->setText(treeColNum::colItemType, QString::fromLocal8Bit("treeItemType"));
+    item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsAutoTristate);
+    item->setData(treeColNum::colItem, Qt::UserRole, QVariant(fileName));
+    parItem->addChild(item);
 
 }
 
@@ -76,6 +86,28 @@ void ExQTreeWidget::on_actAddFolder_triggered()
 
         if(item != nullptr)
             addFolderItem(item, path);
+    }
+}
+
+void ExQTreeWidget::on_actAddFile_triggered()
+{
+    QStringList list = QFileDialog::getOpenFileNames(this, QString::fromLocal8Bit("选择多个将要加载的图片"), "", "Images(*.jpg, *.png, *.*)");             //选择目录
+    if (! list.isEmpty()) {
+        QTreeWidgetItem* parItem = nullptr;
+        QTreeWidgetItem* item = ui->treeFiles->currentItem();       //获取当前节点
+
+        if(item == nullptr) return;
+
+        if (item->type() == treeItemType::itemImage) {
+            parItem = item->parent();
+        }
+        else {
+            parItem = item;
+        }
+        for (int i = 0; i < list.size(); ++i) {
+            QString strName = list.at(i);
+            addImageItem(parItem, strName);
+        }
     }
 }
 
