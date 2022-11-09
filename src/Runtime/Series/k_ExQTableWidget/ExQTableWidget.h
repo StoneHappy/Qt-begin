@@ -17,6 +17,9 @@ public:
     explicit ExQTableWidget(QWidget *parent = nullptr);
     ~ExQTableWidget();
 
+private slots:
+    void on_btnSetHeader_clicked();
+    
 private:
     Ui::ExQTableWidget *ui;
     QLabel *m_labCellIndex;                              //状态栏上用来显示单元格的行号、列号

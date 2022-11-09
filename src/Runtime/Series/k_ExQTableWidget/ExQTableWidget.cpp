@@ -1,5 +1,7 @@
 ﻿#include "ExQTableWidget.h"
 #include "ui_ExQTableWidget.h"
+#include <qfont.h>
+#include <qtablewidget.h>
 
 ExQTableWidget::ExQTableWidget(QWidget *parent) :
     QMainWindow(parent),
@@ -18,7 +20,30 @@ ExQTableWidget::ExQTableWidget(QWidget *parent) :
     ui->statusbar->addWidget(m_labCellType);
     ui->statusbar->addWidget(m_labStudID);
     ui->chkBoxHeadEdit->setChecked(Qt::Unchecked);
+
+    setCentralWidget(ui->splitter_2);
+    on_btnSetHeader_clicked();
 }
+
+void ExQTableWidget::on_btnSetHeader_clicked()
+{
+    QTableWidgetItem* item = nullptr;
+    QStringList list;
+    list << QString::fromLocal8Bit("姓名") << QString::fromLocal8Bit("性别") << QString::fromLocal8Bit("出生日期") << QString::fromLocal8Bit("籍贯") << QString::fromLocal8Bit("分数") << QString::fromLocal8Bit("是否喜欢二次元");
+
+    ui->tableWidget->setColumnCount(list.count());
+    for (int i = 0; i < ui->tableWidget->columnCount(); ++i) {
+        item = new QTableWidgetItem(list.at(i));
+        QFont font;
+        font.setBold(true);
+        font.setPointSize(12);
+        item->setFont(font);
+        item->setTextColor(Qt::red);
+        ui->tableWidget->setHorizontalHeaderItem(i, item);
+    }
+    
+}
+
 
 ExQTableWidget::~ExQTableWidget()
 {
