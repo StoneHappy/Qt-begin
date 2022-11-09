@@ -1,7 +1,11 @@
 ﻿#include "ExQTableWidget.h"
 #include "ui_ExQTableWidget.h"
+#include <qdatetime.h>
 #include <qfont.h>
+#include <qicon.h>
+#include <qnamespace.h>
 #include <qtablewidget.h>
+#include <QDate>
 
 ExQTableWidget::ExQTableWidget(QWidget *parent) :
     QMainWindow(parent),
@@ -23,6 +27,7 @@ ExQTableWidget::ExQTableWidget(QWidget *parent) :
 
     setCentralWidget(ui->splitter_2);
     on_btnSetHeader_clicked();
+    createItemsARow(0, QString::fromLocal8Bit("小明"), QString::fromLocal8Bit("男"), {2019, 9, 12},  QString::fromLocal8Bit("中国"), 100 , true);
 }
 
 void ExQTableWidget::on_btnSetHeader_clicked()
@@ -42,6 +47,53 @@ void ExQTableWidget::on_btnSetHeader_clicked()
         ui->tableWidget->setHorizontalHeaderItem(i, item);
     }
     
+}
+
+
+void ExQTableWidget::createItemsARow(int row, QString name, QString sex, QDate birth, QString nation, int score, bool isAnime)
+{
+    QTableWidgetItem* item = nullptr;
+    int stunID = 20190913;
+    QString str = "";
+
+    item = new QTableWidgetItem(name, cellType::ctName);
+    item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    stunID += row;
+    item->setData(Qt::UserRole, QVariant(stunID));
+    ui->tableWidget->setItem(row, fieldColNum::colName, item);
+
+    item = new QTableWidgetItem(sex, cellType::ctSex);
+    QIcon icon;
+    if (sex == QString::fromLocal8Bit("男"))
+        icon.addFile(":/images/Image002.ico");
+    else
+        icon.addFile(":/images/Image003.ico");
+    item->setIcon(icon);
+    item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->tableWidget->setItem(row, fieldColNum::colSex,  item);
+    
+    item = new QTableWidgetItem(birth.toString("yyyy-MM-dd"), cellType::ctBirth);
+    item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->tableWidget->setItem(row, fieldColNum::colBirth, item);
+
+    item = new QTableWidgetItem(nation, cellType::ctNation);          //籍贯
+    item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->tableWidget->setItem(row, fieldColNum::colNation, item);
+
+    item = new QTableWidgetItem(str.setNum(score), cellType::ctScore);
+    item->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+    ui->tableWidget->setItem(row, fieldColNum::colScore, item);
+
+    item = new QTableWidgetItem(QString::fromLocal8Bit("喜欢"), cellType::ctLikeAnime);
+    if (isAnime) 
+        item->setCheckState(Qt::Checked);
+    else
+        item->setCheckState(Qt::Unchecked);
+
+    item->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+    item->setBackgroundColor(Qt::gray);
+    ui->tableWidget->setItem(row, fieldColNum::colLikeAnime, item);
+
 }
 
 

@@ -31,5 +31,7 @@
         <file>images/Image014.jpg</file>
         <file>images/Image015.jpg</file>
         <file>images/Image016.jpg</file>
+        <file>images/Image002.ico</file>
+        <file>images/Image003.ico</file>
     </qresource>
 </RCC>
