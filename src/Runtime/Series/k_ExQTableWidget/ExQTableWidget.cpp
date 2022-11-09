@@ -155,6 +155,23 @@ void ExQTableWidget::on_btnAddRow_clicked()
     createItemsARow(row, QString::fromLocal8Bit("添加学生"), QString::fromLocal8Bit("女"), QDate(2021, 07, 17), QString::fromLocal8Bit("唐朝"), 93, true);
 }
 
+//删除当前行
+void ExQTableWidget::on_btnDelRow_clicked()
+{
+    int currRow = ui->tableWidget->currentRow();
+    ui->tableWidget->removeRow(currRow);                           //删除当前行以及其他items
+}
+//自动设置行高
+void ExQTableWidget::on_btnAutoHeight_clicked()
+{
+    ui->tableWidget->resizeRowsToContents();                       //自动调整所有行的内容，以适应内容高度
+}
+//自动设置列高
+void ExQTableWidget::on_btnAutoWidth_clicked()
+{
+    ui->tableWidget->resizeColumnsToContents();                    //自动调整所有列的内容，以适应内容宽度
+}
+
 ExQTableWidget::~ExQTableWidget()
 {
     delete ui;

@@ -40,6 +40,9 @@ private slots:
     void on_btnSetRow_clicked();
     void on_btnInsertRow_clicked();
     void on_btnAddRow_clicked();
+    void on_btnDelRow_clicked();
+    void on_btnAutoHeight_clicked();
+    void on_btnAutoWidth_clicked();
 
 
 private:
