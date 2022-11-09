@@ -2,6 +2,7 @@
 #include "ui_ExQTableWidget.h"
 #include <qdatetime.h>
 #include <qfont.h>
+#include <qglobal.h>
 #include <qicon.h>
 #include <qnamespace.h>
 #include <qtablewidget.h>
@@ -95,6 +96,42 @@ void ExQTableWidget::createItemsARow(int row, QString name, QString sex, QDate b
     ui->tableWidget->setItem(row, fieldColNum::colLikeAnime, item);
 
 }
+
+void ExQTableWidget::on_btnInitTable_clicked()
+{
+    QTime time;
+    time = QTime::currentTime();
+    qsrand(static_cast<int>(time.minute() + time.second() * 1000));
+
+    QString name = QString::fromLocal8Bit("学生");
+    QString sex =  QString::fromLocal8Bit("保密");
+    QDate birth(2019, 9, 12);
+    QString nation =  QString::fromLocal8Bit("武汉");
+    int score = 87;
+    bool isAnime = true;
+
+    ui->tableWidget->clearContents();
+    int row = ui->tableWidget->rowCount();
+
+    for (int i = 0; i < row; ++i) {
+        name = QString::fromLocal8Bit("学生");
+        name += QString::number(i);
+        int n = qrand() % 2;
+
+        if (n == 0) {
+            sex = QString::fromLocal8Bit("男");
+            isAnime = true;
+        }
+        else {
+            sex = QString::fromLocal8Bit("女");
+            isAnime = false;
+        }
+        score += 10;
+        birth = birth.addDays(30);
+        createItemsARow(i, name, sex, birth, nation, score, isAnime);
+    }
+}
+
 
 
 ExQTableWidget::~ExQTableWidget()
