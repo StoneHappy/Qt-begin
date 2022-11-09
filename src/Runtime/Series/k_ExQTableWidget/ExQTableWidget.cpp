@@ -132,7 +132,28 @@ void ExQTableWidget::on_btnInitTable_clicked()
     }
 }
 
+//设置表格的行数
+void ExQTableWidget::on_btnSetRow_clicked()
+{
+    int n = ui->spinBoxRow->value();
+    ui->tableWidget->setRowCount(n);
+}
 
+//插入行
+void ExQTableWidget::on_btnInsertRow_clicked()
+{
+    int currRow = ui->tableWidget->currentRow();
+    ui->tableWidget->insertRow(currRow);                           //插入一行，不会自动为单元格创建item
+    createItemsARow(currRow, QString::fromLocal8Bit("插入学生"), QString::fromLocal8Bit("女"), QDate(2020, 07, 17), QString::fromLocal8Bit("楚国"), 87, true);
+}
+
+//在最后一行添加一行
+void ExQTableWidget::on_btnAddRow_clicked()
+{
+    int row = ui->tableWidget->rowCount();
+     ui->tableWidget->insertRow(row);
+    createItemsARow(row, QString::fromLocal8Bit("添加学生"), QString::fromLocal8Bit("女"), QDate(2021, 07, 17), QString::fromLocal8Bit("唐朝"), 93, true);
+}
 
 ExQTableWidget::~ExQTableWidget()
 {

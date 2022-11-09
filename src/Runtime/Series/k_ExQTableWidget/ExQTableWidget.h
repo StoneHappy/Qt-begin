@@ -37,7 +37,12 @@ public:
 private slots:
     void on_btnSetHeader_clicked();
     void on_btnInitTable_clicked();
+    void on_btnSetRow_clicked();
+    void on_btnInsertRow_clicked();
+    void on_btnAddRow_clicked();
 
+
+private:
     void createItemsARow(int row, QString name, QString sex, QDate birth, QString nation, int score, bool isAnime);
 
 private:
