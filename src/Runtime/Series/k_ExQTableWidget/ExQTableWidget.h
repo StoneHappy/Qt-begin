@@ -43,7 +43,14 @@ private slots:
     void on_btnDelRow_clicked();
     void on_btnAutoHeight_clicked();
     void on_btnAutoWidth_clicked();
-
+    void on_btnReadToEdit_clicked();
+    void on_chkBoxHeadEdit_clicked(bool checked);        //表格可编辑模式
+    void on_chkBoxRowColor_clicked(bool checked);        //间隔行底色
+    void on_chkBoxHeadRow_clicked(bool checked);         //显示行表头
+    void on_chkBoxHeadCol_clicked(bool checked);         //显示列表头
+    void on_radioBtnSelectItem_clicked();                //单元格选择
+    void on_radioBtnSelectRow_clicked();                 //行选择
+    void on_tableWidget_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
 
 private:
     void createItemsARow(int row, QString name, QString sex, QDate birth, QString nation, int score, bool isAnime);

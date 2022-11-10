@@ -8,9 +8,10 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/out/bin/AppName.exe",
-            "args": ["--gtest_filter=ExampleTest.SimpleFirstTest"],
-            "cwd": "${workspaceFolder}/out/bin"
+            "program": "${workspaceFolder}/out/bin/QtExamplesTests.exe",
+            "args": ["--gtest_filter=QtBegin.k_ExQTableWidget"],
+            "cwd": "${workspaceFolder}/out/bin",
+            "relativePathBase": "${workspaceFolder}/out/bin"
         }
     ]
 }

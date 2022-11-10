@@ -1,9 +1,10 @@
 {
     "cmake.configureOnEdit": false,
     "cmake.configureArgs" : [
-        "-DCMAKE_PREFIX_PATH=D:/softwares/Qt/5.15.2/msvc2015_64"
+        "-DCMAKE_PREFIX_PATH=D:/softwares/Qt/5.15.2/msvc2015_64",
+        "-DCMAKE_BUILD_TYPE=Debug"
     ],
-    "cmake.generator": "Ninja",
+    // "cmake.generator": "Ninja",
     "cmake.debugConfig": {
         "args": ["--gtest_filter=QtBegin.k_ExQTableWidget"]
     }

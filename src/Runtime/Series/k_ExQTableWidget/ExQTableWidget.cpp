@@ -171,6 +171,78 @@ void ExQTableWidget::on_btnAutoWidth_clicked()
 {
     ui->tableWidget->resizeColumnsToContents();                    //自动调整所有列的内容，以适应内容宽度
 }
+void ExQTableWidget::on_btnReadToEdit_clicked()
+{
+    QTableWidgetItem* item = nullptr;
+    QString str = "";
+    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
+    {
+        str = "";
+        for (int j = 0; j < ui->tableWidget->columnCount() - 1; j++)
+        {
+            item = ui->tableWidget->item(i, j);
+            str += item->text() + " ";
+        }
+
+        item = ui->tableWidget->item(i, fieldColNum::colLikeAnime);
+
+        if (item->checkState() == Qt::Checked)
+            str += QString::fromLocal8Bit("喜欢二次元");
+        else
+            str += QString::fromLocal8Bit("不喜欢二次元");
+        ui->plainTextEdit->appendPlainText(str);
+    }
+}
+
+//表格可编辑模式
+void ExQTableWidget::on_chkBoxHeadEdit_clicked(bool checked)
+{
+    if (checked)
+        ui->tableWidget->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
+    else
+        ui->tableWidget->setEditTriggers(QAbstractItemView::DoubleClicked);
+}
+
+//间隔行底色
+void ExQTableWidget::on_chkBoxRowColor_clicked(bool checked)
+{
+    ui->tableWidget->setAlternatingRowColors(checked);
+}
+
+//显示行表头
+void ExQTableWidget::on_chkBoxHeadRow_clicked(bool checked)
+{
+    ui->tableWidget->horizontalHeader()->setVisible(checked);
+}
+
+//显示列表头
+void ExQTableWidget::on_chkBoxHeadCol_clicked(bool checked)
+{
+    ui->tableWidget->verticalHeader()->setVisible(checked);
+}
+
+//单元格选择
+void ExQTableWidget::on_radioBtnSelectItem_clicked()
+{
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectItems);
+}
+
+//行选择
+void ExQTableWidget::on_radioBtnSelectRow_clicked()
+{
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+}
+
+void ExQTableWidget::on_tableWidget_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
+{
+    //m_labCellIndex->setText(QString::fromLocal8Bit("当前单元格坐标: [") + QString::number(currentRow) + QString::fromLocal8Bit("行，") + QString::number(currentColumn) + QString::fromLocal8Bit("列"));
+    m_labCellIndex->setText(QString::fromLocal8Bit("当前单元格坐标: [ %1行 %2列 ]").arg(currentRow).arg(currentColumn));
+    QTableWidgetItem* item = ui->tableWidget->item(currentRow, currentColumn);
+    int type = item->type();
+    m_labCellType->setText(QString::fromLocal8Bit("当前单元格类型：%1").arg(type));
+    QTableWidgetItem* item2 = ui->tableWidget->item(currentRow, fieldColNum::colName);
+    m_labStudID->setText(QString::fromLocal8Bit("学生ID：%1").arg(item2->data(Qt::UserRole).toString()));
+}
 
 ExQTableWidget::~ExQTableWidget()
 {
