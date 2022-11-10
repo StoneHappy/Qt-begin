@@ -54,3 +54,8 @@ TEST(QtBegin, k_ExQTableWidget)
 {
 	QtBegin::k_ExQTableWidget::main(0, nullptr);
 }
+
+TEST(QtBegin, l_ExQFileSystemModel)
+{
+	QtBegin::l_ExQFileSystemModel::main(0, nullptr);
+}

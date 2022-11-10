@@ -9,6 +9,7 @@
 #include "i_ExQListWidget/ExQListWidget.h"
 #include "j_ExQTreeWidget/ExQTreeWidget.h"
 #include "k_ExQTableWidget/ExQTableWidget.h"
+#include "l_ExQFileSystemModel/ExQFileSystemModel.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -169,6 +170,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExQTableWidget w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace l_ExQFileSystemModel {
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExQFileSystemModel w;
 
             w.show();
 
