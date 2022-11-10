@@ -10,6 +10,7 @@
 #include "j_ExQTreeWidget/ExQTreeWidget.h"
 #include "k_ExQTableWidget/ExQTableWidget.h"
 #include "l_ExQFileSystemModel/ExQFileSystemModel.h"
+#include "m_ExDialog/ExDialog.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -185,6 +186,21 @@ namespace QtBegin {
             QApplication a(argc, argv);
 
             ExQFileSystemModel w;
+
+            w.show();
+
+            return a.exec();
+        }
+    }
+}
+
+namespace QtBegin {
+    namespace m_ExDialog {
+        int main(int argc, char* argv[])
+        {
+            QApplication a(argc, argv);
+
+            ExDialog w;
 
             w.show();
 

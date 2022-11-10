@@ -59,3 +59,8 @@ TEST(QtBegin, l_ExQFileSystemModel)
 {
 	QtBegin::l_ExQFileSystemModel::main(0, nullptr);
 }
+
+TEST(QtBegin, m_ExDialog)
+{
+	QtBegin::m_ExDialog::main(0, nullptr);
+}
