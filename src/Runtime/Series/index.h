@@ -11,200 +11,216 @@
 #include "k_ExQTableWidget/ExQTableWidget.h"
 #include "l_ExQFileSystemModel/ExQFileSystemModel.h"
 #include "m_ExDialog/ExDialog.h"
+#include "n_ExQStandardItemModel/ExQStandardItemModel.h"
 #include <qapplication.h>
 
 namespace QtBegin {
-    namespace a_QtMetaObjectEx {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace a_QtMetaObjectEx {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExWidget w;
+			ExWidget w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 
 namespace QtBegin {
-    namespace b_QStringEx {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace b_QStringEx {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQString w;
+			ExQString w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace c_QtQStringFunEx {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace c_QtQStringFunEx {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQStringFun w;
+			ExQStringFun w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace d_ExQSlider {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace d_ExQSlider {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQSlider w;
+			ExQSlider w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace e_ExQProgressBar {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace e_ExQProgressBar {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQProgressBar w;
+			ExQProgressBar w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace f_ExQdialQLCD {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace f_ExQdialQLCD {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQdialQLCD w;
+			ExQdialQLCD w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace g_ExDateTime {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace g_ExDateTime {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExDateTime w;
+			ExDateTime w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace h_ExQcomboBox {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace h_ExQcomboBox {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQcomboBox w;
+			ExQcomboBox w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace i_ExQListWidget {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace i_ExQListWidget {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQListWidget w;
+			ExQListWidget w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace j_ExQTreeWidget {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace j_ExQTreeWidget {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQTreeWidget w;
+			ExQTreeWidget w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace k_ExQTableWidget {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace k_ExQTableWidget {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQTableWidget w;
+			ExQTableWidget w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace l_ExQFileSystemModel {
-        int main(int argc, char *argv[])
-        {
-            QApplication a(argc, argv);
+	namespace l_ExQFileSystemModel {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExQFileSystemModel w;
+			ExQFileSystemModel w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
 }
 
 namespace QtBegin {
-    namespace m_ExDialog {
-        int main(int argc, char* argv[])
-        {
-            QApplication a(argc, argv);
+	namespace m_ExDialog {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
 
-            ExDialog w;
+			ExDialog w;
 
-            w.show();
+			w.show();
 
-            return a.exec();
-        }
-    }
+			return a.exec();
+		}
+	}
+}
+
+namespace QtBegin {
+	namespace n_ExQStandardItemModel {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
+
+			ExQStandardItemModel w;
+
+			w.show();
+
+			return a.exec();
+		}
+	}
 }

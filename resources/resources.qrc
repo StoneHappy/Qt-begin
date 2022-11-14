@@ -33,5 +33,17 @@
         <file>images/Image016.jpg</file>
         <file>images/Image002.ico</file>
         <file>images/Image003.ico</file>
+        <file>images/ExQStandardItemModel/Image001.png</file>
+        <file>images/ExQStandardItemModel/Image002.png</file>
+        <file>images/ExQStandardItemModel/Image003.png</file>
+        <file>images/ExQStandardItemModel/Image004.png</file>
+        <file>images/ExQStandardItemModel/Image005.png</file>
+        <file>images/ExQStandardItemModel/Image006.png</file>
+        <file>images/ExQStandardItemModel/Image007.jpg</file>
+        <file>images/ExQStandardItemModel/Image008.jpg</file>
+        <file>images/ExQStandardItemModel/Image009.jpg</file>
+        <file>images/ExQStandardItemModel/Image010.jpg</file>
+        <file>images/ExQStandardItemModel/Image011.jpg</file>
+        <file>images/ExQStandardItemModel/Image012.png</file>
     </qresource>
 </RCC>

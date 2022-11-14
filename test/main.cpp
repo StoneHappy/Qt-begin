@@ -64,3 +64,8 @@ TEST(QtBegin, m_ExDialog)
 {
 	QtBegin::m_ExDialog::main(0, nullptr);
 }
+
+TEST(QtBegin, n_ExQStandardItemModel)
+{
+	QtBegin::n_ExQStandardItemModel::main(0, nullptr);
+}
