@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include <QFileDialog>
 #include <QTextStream>
+#include "ExDelegate.h"
 #define COLUMN 6  //数据表的列数
 
 ExQStandardItemModel::ExQStandardItemModel(QWidget *parent) :
@@ -83,7 +84,44 @@ void ExQStandardItemModel::on_actOpen_triggered()
 //从list初始化数据模型QTableView里面
 void ExQStandardItemModel::init(QStringList& list)
 {
-   
+    int rowCount = list.count();                                           //文本行数，第一行为表头
+    m_model->setRowCount(rowCount - 1);
+
+    QString header = list.at(0);
+    QStringList headerList = header.split(QRegExp("\\s+"), QString::SkipEmptyParts); //通过一个或者多个空格或者tab按键切割
+    m_model->setHorizontalHeaderLabels(headerList);                       //设置表头
+
+    QStandardItem* item = nullptr;                                        //此处开始，设置表格数据
+    QStringList tempList;
+    int j = 0;
+
+    for (int i = 1; i < rowCount; i++) {
+        QString aLineText = list.at(i);
+        tempList = aLineText.split(QRegExp("\\s+"), QString::SkipEmptyParts);//正则表达式中\s匹配任何空白字符，包括空格、制表符、换页符等等, 等价于[ \f\n\r\t\v]
+
+        for (j = 0; j < COLUMN - 1; j++) {                                     //设置前5列的item
+
+            if (j == 3) {
+                ExDelegate* itemDelegate = new ExDelegate();
+                ui->tableView->setItemDelegateForColumn(3, itemDelegate);
+            }
+
+            item = new QStandardItem(tempList.at(j));
+            m_model->setItem(i - 1, j, item);
+        }
+
+
+
+        item = new QStandardItem(tempList.at(j));                          //最后一列的item
+        item->setCheckable(true);                                          //设置有检查框
+
+        if (tempList.at(j) == "https://www.google.com")
+            item->setCheckState(Qt::Unchecked);
+        else
+            item->setCheckState(Qt::Checked);
+
+        m_model->setItem(i - 1, COLUMN - 1, item);
+    }
 }
 
 ExQStandardItemModel::~ExQStandardItemModel()
