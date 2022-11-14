@@ -19,6 +19,9 @@ public:
     explicit ExQStandardItemModel(QWidget *parent = nullptr);
     ~ExQStandardItemModel();
 
+private slots:
+    void onCurrentChanged(const QModelIndex& current, const QModelIndex& previous);  //当前单元格发生变化时
+
 private:
     Ui::ExQStandardItemModel *ui;
 
