@@ -21,6 +21,10 @@ public:
 
 private slots:
     void onCurrentChanged(const QModelIndex& current, const QModelIndex& previous);  //当前单元格发生变化时
+    void on_actOpen_triggered();            //打开和导入文件，并且在plainTextEdit里面显示
+
+private:
+    void init(QStringList& list);           //从list初始化数据模型
 
 private:
     Ui::ExQStandardItemModel *ui;

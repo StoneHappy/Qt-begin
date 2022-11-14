@@ -2,7 +2,8 @@
 #include "ui_ExQStandardItemModel.h"
 #include <QToolButton>
 #include <QStandardItemModel>
-
+#include <QFileDialog>
+#include <QTextStream>
 #define COLUMN 6  //数据表的列数
 
 ExQStandardItemModel::ExQStandardItemModel(QWidget *parent) :
@@ -43,6 +44,46 @@ void ExQStandardItemModel::onCurrentChanged(const QModelIndex& current, const QM
         QFont font = item->font();
         ui->actBold->setChecked(font.bold());                              //更新actFontBold的check状态
     }
+}
+
+//action+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//打开和导入文件，并且在plainTextEdit里面显示
+void ExQStandardItemModel::on_actOpen_triggered()
+{
+    QString currPath = QCoreApplication::applicationDirPath();
+    QString fileName = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("打开一个文件"), currPath, QString::fromLocal8Bit("导入数据文件(*txt);;所有文件(*.*)"));
+
+    if (fileName.isEmpty())
+        return;
+
+    QStringList list;
+    QFile file(fileName);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {                //只读形式打开文本文件
+        QTextStream stream(&file);                                         //用文本流读取文件
+        ui->plainTextEdit->clear();
+
+        while (!stream.atEnd()) {                                          //读取文本中文本的内容
+            QString str = stream.readLine();
+            ui->plainTextEdit->appendPlainText(str);
+            list.append(str);
+        }
+
+        file.close();                                                      //关闭
+        m_labCurrFile->setText("当前文件：" + fileName);                    //设置状态栏
+
+        ui->actAppend->setEnabled(true);                                   //设置action的Enabled的属性
+        ui->actInsert->setEnabled(true);
+        ui->actDelete->setEnabled(true);
+        ui->actSave->setEnabled(true);
+    }
+
+    init(list);                                                            //初始化.txt的数据
+}
+
+//从list初始化数据模型QTableView里面
+void ExQStandardItemModel::init(QStringList& list)
+{
+   
 }
 
 ExQStandardItemModel::~ExQStandardItemModel()
