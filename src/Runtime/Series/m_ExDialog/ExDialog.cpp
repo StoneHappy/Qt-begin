@@ -1,4 +1,4 @@
-#include "ExDialog.h"
+ï»¿#include "ExDialog.h"
 #include "ui_ExDialog.h"
 #include <QFileDialog>
 #include <QColorDialog>
@@ -13,13 +13,13 @@ ExDialog::ExDialog(QWidget *parent) :
     ui->setupUi(this);
 }
 
-//±ê×¼ÎÄ¼ş¶Ô»°¿òQFileDialog+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//æ ‡å‡†æ–‡ä»¶å¯¹è¯æ¡†QFileDialog+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void ExDialog::on_btnOpenFile_clicked()
 {
-    QString path = QDir::currentPath();                        //»ñÈ¡Ó¦ÓÃ³ÌĞòµ±Ç°Ä¿Â¼
-    QString fileter = QString::fromLocal8Bit("ÎÄ±¾ÎÄ¼ş(*.txt);;Í¼Æ¬ÎÄ¼ş(*.jpg *.gif);;ËùÓĞÎÄ¼ş(*.*)");
+    QString path = QDir::currentPath();                        //è·å–åº”ç”¨ç¨‹åºå½“å‰ç›®å½•
+    QString fileter = QString::fromLocal8Bit("æ–‡æœ¬æ–‡ä»¶(*.txt);;å›¾ç‰‡æ–‡ä»¶(*.jpg *.gif);;æ‰€æœ‰æ–‡ä»¶(*.*)");
 
-    QString fileNmae = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("Ñ¡ÔñÒ»¸öÎÄ¼ş"), path, fileter);
+    QString fileNmae = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("é€‰æ‹©ä¸€ä¸ªæ–‡ä»¶"), path, fileter);
     if (!fileNmae.isEmpty()) {
         ui->plainTextEdit->appendPlainText(fileNmae);
     }
@@ -27,10 +27,10 @@ void ExDialog::on_btnOpenFile_clicked()
 
 void ExDialog::on_btnOpenFiles_clicked()
 {
-    QString path = QDir::currentPath();                        //»ñÈ¡Ó¦ÓÃ³ÌĞòµ±Ç°Ä¿Â¼
-    QString fileter = QString::fromLocal8Bit("ÎÄ±¾ÎÄ¼ş(*.txt);;Í¼Æ¬ÎÄ¼ş(*.jpg *.gif);;ËùÓĞÎÄ¼ş(*.*)");
+    QString path = QDir::currentPath();                        //è·å–åº”ç”¨ç¨‹åºå½“å‰ç›®å½•
+    QString fileter = QString::fromLocal8Bit("æ–‡æœ¬æ–‡ä»¶(*.txt);;å›¾ç‰‡æ–‡ä»¶(*.jpg *.gif);;æ‰€æœ‰æ–‡ä»¶(*.*)");
 
-    QStringList fileNmaeList = QFileDialog::getOpenFileNames(this, QString::fromLocal8Bit("Ñ¡Ôñ¶à¸öÎÄ¼ş"), path, fileter);
+    QStringList fileNmaeList = QFileDialog::getOpenFileNames(this, QString::fromLocal8Bit("é€‰æ‹©å¤šä¸ªæ–‡ä»¶"), path, fileter);
     for (int i = 0; i < fileNmaeList.count(); i++) {
         ui->plainTextEdit->appendPlainText(fileNmaeList.at(i));
     }
@@ -38,8 +38,8 @@ void ExDialog::on_btnOpenFiles_clicked()
 
 void ExDialog::on_btnExistingDir_clicked()
 {
-    QString currPath = QCoreApplication::applicationDirPath(); //»ñÈ¡Ó¦ÓÃ³ÌĞòµ±Ç°Ä¿Â¼
-    QString path = QFileDialog::getExistingDirectory(this, QString::fromLocal8Bit("Ñ¡ÔñÒ»¸öÄ¿Â¼¡¾·ÇÎÄ¼ş¡¿"), currPath, QFileDialog::ShowDirsOnly);   //×îºóÒ»¸ö²ÎÊı£¬±íÊ¾Ö»ÏÔÊ¾Â·¾¶
+    QString currPath = QCoreApplication::applicationDirPath(); //è·å–åº”ç”¨ç¨‹åºå½“å‰ç›®å½•
+    QString path = QFileDialog::getExistingDirectory(this, QString::fromLocal8Bit("é€‰æ‹©ä¸€ä¸ªç›®å½•ã€éæ–‡ä»¶ã€‘"), currPath, QFileDialog::ShowDirsOnly);   //æœ€åä¸€ä¸ªå‚æ•°ï¼Œè¡¨ç¤ºåªæ˜¾ç¤ºè·¯å¾„
 
     if (!path.isEmpty()) {
         ui->plainTextEdit->appendPlainText(path);
@@ -48,11 +48,11 @@ void ExDialog::on_btnExistingDir_clicked()
 
 void ExDialog::on_btnGetColor_clicked()
 {
-    QPalette pal = ui->plainTextEdit->palette();              //»ñÈ¡Ìõµ÷É«°å
+    QPalette pal = ui->plainTextEdit->palette();              //è·å–æ¡è°ƒè‰²æ¿
     QColor initColor = pal.color(QPalette::Text);
-    QColor color = QColorDialog::getColor(initColor, this, QString::fromLocal8Bit("Ñ¡ÔñÑÕÉ«"));
+    QColor color = QColorDialog::getColor(initColor, this, QString::fromLocal8Bit("é€‰æ‹©é¢œè‰²"));
 
-    if (color.isValid()) {                                    //ÒòÎªÃ»ÓĞ.isEmpty(),¹Ê¶øÊ¹ÓÃ.isValid()À´ÅĞ¶Ï
+    if (color.isValid()) {                                    //å› ä¸ºæ²¡æœ‰.isEmpty(),æ•…è€Œä½¿ç”¨.isValid()æ¥åˆ¤æ–­
         pal.setColor(QPalette::Text, color);
         ui->plainTextEdit->setPalette(pal);
     }
@@ -70,34 +70,34 @@ void ExDialog::on_btnGetFont_clicked()
 
 void ExDialog::on_btnSaveFile_clicked()
 {
-    QString path = QDir::currentPath();                        //»ñÈ¡Ó¦ÓÃ³ÌĞòµ±Ç°Ä¿Â¼
-    QString fileter = QString::fromLocal8Bit("Í·ÎÄ¼ş(*.h);;Ô´ÎÄ¼ş(*.cpp);;ËùÓĞÎÄ¼ş(*.*)");
-    QString fileNmae = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("±£´æÎÄ¼ş"), path, fileter);
+    QString path = QDir::currentPath();                        //è·å–åº”ç”¨ç¨‹åºå½“å‰ç›®å½•
+    QString fileter = QString::fromLocal8Bit("å¤´æ–‡ä»¶(*.h);;æºæ–‡ä»¶(*.cpp);;æ‰€æœ‰æ–‡ä»¶(*.*)");
+    QString fileNmae = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("ä¿å­˜æ–‡ä»¶"), path, fileter);
 
     if (!fileNmae.isEmpty())
         ui->plainTextEdit->appendPlainText(fileNmae);
 }
 
-//±ê×¼ÏûÏ¢¶Ô»°¿ò+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//æ ‡å‡†æ¶ˆæ¯å¯¹è¯æ¡†+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void ExDialog::on_btnQuestion_clicked()
 {
-    QMessageBox::StandardButton ret = QMessageBox::question(this, QString::fromLocal8Bit("ÎÊÌâÏûÏ¢¶Ô»°¿ò"), QString::fromLocal8Bit("question¶Ô»°¿òµÄÄÚÈİ"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Close, QMessageBox::NoButton);
+    QMessageBox::StandardButton ret = QMessageBox::question(this, QString::fromLocal8Bit("é—®é¢˜æ¶ˆæ¯å¯¹è¯æ¡†"), QString::fromLocal8Bit("questionå¯¹è¯æ¡†çš„å†…å®¹"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Close, QMessageBox::NoButton);
 
     switch (ret) {
     case QMessageBox::Yes: {
-        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("QMessageBox::yes °´Å¥±»Ñ¡ÖĞ"));
+        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("QMessageBox::yes æŒ‰é’®è¢«é€‰ä¸­"));
         break;
     }
     case QMessageBox::No: {
-        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("QMessageBox::No °´Å¥±»Ñ¡ÖĞ"));
+        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("QMessageBox::No æŒ‰é’®è¢«é€‰ä¸­"));
         break;
     }
     case QMessageBox::Close: {
-        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("QMessageBox::Close °´Å¥±»Ñ¡ÖĞ"));
+        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("QMessageBox::Close æŒ‰é’®è¢«é€‰ä¸­"));
         break;
     }
     default: {
-        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("ÕâÊÇ switch µÄdefault µÄÑ¡Ïî"));
+        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("è¿™æ˜¯ switch çš„default çš„é€‰é¡¹"));
         break;
     }
     }
@@ -105,34 +105,34 @@ void ExDialog::on_btnQuestion_clicked()
 
 void ExDialog::on_btnInformation_clicked()
 {
-    QMessageBox::information(this, QString::fromLocal8Bit("ĞÅÏ¢ÏûÏ¢¶Ô»°¿ò"), QString::fromLocal8Bit("information¶Ô»°¿òµÄÄÚÈİ"), QMessageBox::Ok, QMessageBox::NoButton);
+    QMessageBox::information(this, QString::fromLocal8Bit("ä¿¡æ¯æ¶ˆæ¯å¯¹è¯æ¡†"), QString::fromLocal8Bit("informationå¯¹è¯æ¡†çš„å†…å®¹"), QMessageBox::Ok, QMessageBox::NoButton);
 }
 
 void ExDialog::on_btnWarning_clicked()
 {
-    QMessageBox::warning(this, QString::fromLocal8Bit("¾¯¸æÏûÏ¢¶Ô»°¿ò"), QString::fromLocal8Bit("warning¶Ô»°¿òµÄÄÚÈİ"), QMessageBox::Ok, QMessageBox::NoButton);
+    QMessageBox::warning(this, QString::fromLocal8Bit("è­¦å‘Šæ¶ˆæ¯å¯¹è¯æ¡†"), QString::fromLocal8Bit("warningå¯¹è¯æ¡†çš„å†…å®¹"), QMessageBox::Ok, QMessageBox::NoButton);
 }
 
 void ExDialog::on_btnCritical_clicked()
 {
-    QMessageBox::critical(this, QString::fromLocal8Bit("Î£»úÏûÏ¢¶Ô»°¿ò"), QString::fromLocal8Bit("critical¶Ô»°¿òµÄÄÚÈİ"), QMessageBox::Ok, QMessageBox::NoButton);
+    QMessageBox::critical(this, QString::fromLocal8Bit("å±æœºæ¶ˆæ¯å¯¹è¯æ¡†"), QString::fromLocal8Bit("criticalå¯¹è¯æ¡†çš„å†…å®¹"), QMessageBox::Ok, QMessageBox::NoButton);
 }
 
 void ExDialog::on_btnAbout_clicked()
 {
-    QMessageBox::about(this, QString::fromLocal8Bit("¹ØÓÚÏûÏ¢¶Ô»°¿ò"), QString::fromLocal8Bit("abou ×÷Õß: Í¶ÎÒÒÔÄ¾Àî£¬±¨Ö®ÒÔÇí¾Á"));
+    QMessageBox::about(this, QString::fromLocal8Bit("å…³äºæ¶ˆæ¯å¯¹è¯æ¡†"), QString::fromLocal8Bit("abou ä½œè€…: æŠ•æˆ‘ä»¥æœ¨æï¼ŒæŠ¥ä¹‹ä»¥ç¼ç–"));
 }
 
 void ExDialog::on_btnAboutQt_clicked()
 {
-    QMessageBox::aboutQt(this, QString::fromLocal8Bit("¹ØÓÚQtÏûÏ¢¶Ô»°¿ò"));
+    QMessageBox::aboutQt(this, QString::fromLocal8Bit("å…³äºQtæ¶ˆæ¯å¯¹è¯æ¡†"));
 }
 
-//±ê×¼ÊäÈë¶Ô»°¿òQInputDialog+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//æ ‡å‡†è¾“å…¥å¯¹è¯æ¡†QInputDialog+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void ExDialog::on_btnGetString_clicked()
 {
     bool ok = false;
-    QString text = QInputDialog::getText(this, QString::fromLocal8Bit("ÊäÈëÎÄ×Ö¶Ô»°¿ò"), QString::fromLocal8Bit("ÇëÊäÈëÒ»¸ö×Ö·û´®"), QLineEdit::Normal, QString::fromLocal8Bit("Ä¬ÈÏÊäÈëµÄ×Ö·û´®"), &ok);
+    QString text = QInputDialog::getText(this, QString::fromLocal8Bit("è¾“å…¥æ–‡å­—å¯¹è¯æ¡†"), QString::fromLocal8Bit("è¯·è¾“å…¥ä¸€ä¸ªå­—ç¬¦ä¸²"), QLineEdit::Normal, QString::fromLocal8Bit("é»˜è®¤è¾“å…¥çš„å­—ç¬¦ä¸²"), &ok);
 
     if (ok && !text.isEmpty())
         ui->plainTextEdit->appendPlainText(text);
@@ -141,12 +141,12 @@ void ExDialog::on_btnGetString_clicked()
 void ExDialog::on_btnGetItem_clicked()
 {
     QStringList list;
-    list << QString::fromLocal8Bit("2019-10-02") << QString::fromLocal8Bit("04:28") << QString::fromLocal8Bit("ÔÚÎäººµÄÎÔÊÒ") << QString::fromLocal8Bit("ÇÃ´úÂë") << QString::fromLocal8Bit("Õâ»áÃ»ÓĞÀ§Òâ");
+    list << QString::fromLocal8Bit("2019-10-02") << QString::fromLocal8Bit("04:28") << QString::fromLocal8Bit("åœ¨æ­¦æ±‰çš„å§å®¤") << QString::fromLocal8Bit("æ•²ä»£ç ") << QString::fromLocal8Bit("è¿™ä¼šæ²¡æœ‰å›°æ„");
 
     int index = 0;
-    bool editable = true;   //ComboBoxÊÇ·ñ¿É±à¼­
+    bool editable = true;   //ComboBoxæ˜¯å¦å¯ç¼–è¾‘
     bool ok = false;
-    QString text = QInputDialog::getItem(this, QString::fromLocal8Bit("ÊäÈëitem¶Ô»°¿ò"), QString::fromLocal8Bit("ÇëÑ¡ÔñÒ»¸öitem"), list, index, editable, &ok);
+    QString text = QInputDialog::getItem(this, QString::fromLocal8Bit("è¾“å…¥itemå¯¹è¯æ¡†"), QString::fromLocal8Bit("è¯·é€‰æ‹©ä¸€ä¸ªitem"), list, index, editable, &ok);
 
     if (ok && !text.isEmpty())
         ui->plainTextEdit->appendPlainText(text);
@@ -159,13 +159,13 @@ void ExDialog::on_btnInt_clicked()
     int stepVal = 3;
     int size = ui->plainTextEdit->font().pointSize();
     bool ok = false;
-    int val = QInputDialog::getInt(this, QString::fromLocal8Bit("ÊäÈëÕûÊı¶Ô»°¿ò"), QString::fromLocal8Bit("ÇëÊäÈëÒ»¸öÕûÊı¸Ä±ä×ÖÌå´óĞ¡"), size, min, max, stepVal, &ok);
+    int val = QInputDialog::getInt(this, QString::fromLocal8Bit("è¾“å…¥æ•´æ•°å¯¹è¯æ¡†"), QString::fromLocal8Bit("è¯·è¾“å…¥ä¸€ä¸ªæ•´æ•°æ”¹å˜å­—ä½“å¤§å°"), size, min, max, stepVal, &ok);
 
     if (ok) {
         QFont font = ui->plainTextEdit->font();
         font.setPointSize(val);
         ui->plainTextEdit->setFont(font);
-        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("×ÖÌå´óĞ¡ÒÑ¾­±»ÉèÖÃÎª:") + QString::number(val));
+        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("å­—ä½“å¤§å°å·²ç»è¢«è®¾ç½®ä¸º:") + QString::number(val));
     }
 }
 
@@ -173,13 +173,13 @@ void ExDialog::on_btnDouble_clicked()
 {
     int min = 0;
     int max = 100;
-    int d = 2;                 //Ğ¡ÊıµãµÄÎ»Êı
+    int d = 2;                 //å°æ•°ç‚¹çš„ä½æ•°
     double val = 3.1415;
     bool ok = false;
-    double ret = QInputDialog::getDouble(this, QString::fromLocal8Bit("ÊäÈë¸¡µãÊı¶Ô»°¿ò"), QString::fromLocal8Bit("ÇëÊäÈëÒ»¸öÕûÊı¸Ä±ä×ÖÌå´óĞ¡"), d, min, max, val, &ok);
+    double ret = QInputDialog::getDouble(this, QString::fromLocal8Bit("è¾“å…¥æµ®ç‚¹æ•°å¯¹è¯æ¡†"), QString::fromLocal8Bit("è¯·è¾“å…¥ä¸€ä¸ªæ•´æ•°æ”¹å˜å­—ä½“å¤§å°"), d, min, max, val, &ok);
 
     if (ok)
-        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("¸¡µãÊı´óĞ¡Îª:") + QString::number(ret, 'f', 4));
+        ui->plainTextEdit->appendPlainText(QString::fromLocal8Bit("æµ®ç‚¹æ•°å¤§å°ä¸º:") + QString::number(ret, 'f', 4));
 }
 
 

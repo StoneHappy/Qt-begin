@@ -1,4 +1,4 @@
-#ifndef EXDIALOG_H
+ï»¿#ifndef EXDIALOG_H
 #define EXDIALOG_H
 
 #include <QMainWindow>
@@ -19,12 +19,12 @@ private:
     Ui::ExDialog *ui;
 
 private slots:
-    void on_btnOpenFile_clicked();        //´ò¿ªÒ»¸öÎÄ¼ş
-    void on_btnOpenFiles_clicked();       //´ò¿ª¶à¸öÎÄ¼ş
-    void on_btnExistingDir_clicked();     //Ñ¡ÔñÒÑÓĞÄ¿Â¼
-    void on_btnGetColor_clicked();        //Ñ¡ÔñÑÕÉ«
-    void on_btnGetFont_clicked();         //Ñ¡Ôñ×ÖÌå
-    void on_btnSaveFile_clicked();        //±£´æÎÄ¼ş
+    void on_btnOpenFile_clicked();        //æ‰“å¼€ä¸€ä¸ªæ–‡ä»¶
+    void on_btnOpenFiles_clicked();       //æ‰“å¼€å¤šä¸ªæ–‡ä»¶
+    void on_btnExistingDir_clicked();     //é€‰æ‹©å·²æœ‰ç›®å½•
+    void on_btnGetColor_clicked();        //é€‰æ‹©é¢œè‰²
+    void on_btnGetFont_clicked();         //é€‰æ‹©å­—ä½“
+    void on_btnSaveFile_clicked();        //ä¿å­˜æ–‡ä»¶
 
     void on_btnQuestion_clicked();
     void on_btnInformation_clicked();
@@ -33,10 +33,10 @@ private slots:
     void on_btnAbout_clicked();
     void on_btnAboutQt_clicked();
 
-    void on_btnGetString_clicked();       //ÊäÈë×Ö·û´®
-    void on_btnGetItem_clicked();         //itemÑ¡ÔñÊäÈë
-    void on_btnInt_clicked();             //ÊäÈëÕûÊı
-    void on_btnDouble_clicked();          //ÊäÈë¸¡µãÊı
+    void on_btnGetString_clicked();       //è¾“å…¥å­—ç¬¦ä¸²
+    void on_btnGetItem_clicked();         //itemé€‰æ‹©è¾“å…¥
+    void on_btnInt_clicked();             //è¾“å…¥æ•´æ•°
+    void on_btnDouble_clicked();          //è¾“å…¥æµ®ç‚¹æ•°
 };
 
 #endif // EXDIALOG_H
