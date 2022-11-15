@@ -146,6 +146,68 @@ void ExQStandardItemModel::on_actAppend_triggered()
 }
 
 
+void ExQStandardItemModel::on_actSave_triggered()
+{
+    QString path = QCoreApplication::applicationDirPath();
+    QString fileName = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("选择一个文件"), path, QString::fromLocal8Bit("另存数据(*.txt);;所有数据(*.*)"));
+    if (fileName.isEmpty()) return;
+
+    QFile file(fileName);
+
+    if (!file.open(QIODevice::ReadWrite | QIODevice::Text | QIODevice::Truncate)) return;
+
+    QTextStream stream(&file);
+    QStandardItem* item;
+    int i = 0, j = 0;
+    QString str = "";
+    ui->plainTextEdit->clear();
+
+    for (i = 0; i < m_model->columnCount(); i++)
+    {
+        item = m_model->horizontalHeaderItem(i);
+        str = str + item->text() + "\t\t";
+    }
+
+    stream << str << "\n";
+    ui->plainTextEdit->appendPlainText(str);
+
+    for (i = 0; i < m_model->rowCount(); i++)
+    {
+        str = "";
+
+        for (j = 0; j < m_model->columnCount(); j++)
+        {
+            item = m_model->item(i, j);
+            str = str + item->text() + "\t\t";
+        }
+        stream << str << "\n";
+        ui->plainTextEdit->appendPlainText(str);
+    }
+}
+
+void ExQStandardItemModel::on_actInsert_triggered()
+{
+    QList<QStandardItem*> list;
+    QStandardItem* item;
+
+    for (size_t i = 0; i < COLUMN - 1; i++)
+    {
+        item = new QStandardItem(QString::fromLocal8Bit("添加一行"));
+        list << item;
+    }
+
+    QString str = m_model->headerData(m_model->columnCount() - 1, Qt::Horizontal, Qt::DisplayRole).toString();
+    item = new QStandardItem(str + QString::fromLocal8Bit("添加一行"));
+    item->setCheckable(true);
+    list << item;
+
+    QModelIndex currIndex = m_selectModet->currentIndex();
+    m_model->insertRow(currIndex.row(), list);
+    m_selectModet->clearSelection();
+    m_selectModet->setCurrentIndex(currIndex, QItemSelectionModel::Select);
+}
+
+
 ExQStandardItemModel::~ExQStandardItemModel()
 {
     delete ui;

@@ -23,6 +23,8 @@ private slots:
     void onCurrentChanged(const QModelIndex& current, const QModelIndex& previous);  //当前单元格发生变化时
     void on_actOpen_triggered();            //打开和导入文件，并且在plainTextEdit里面显示
     void on_actAppend_triggered();          //在表格的最后一行添加一行
+    void on_actSave_triggered();
+    void on_actInsert_triggered();
 
 private:
     void init(QStringList& list);           //从list初始化数据模型
