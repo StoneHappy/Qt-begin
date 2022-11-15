@@ -12,6 +12,7 @@
 #include "l_ExQFileSystemModel/ExQFileSystemModel.h"
 #include "m_ExDialog/ExDialog.h"
 #include "n_ExQStandardItemModel/ExQStandardItemModel.h"
+#include "o_ExQtCustomDialog/ExCustomMainWin.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -217,6 +218,21 @@ namespace QtBegin {
 			QApplication a(argc, argv);
 
 			ExQStandardItemModel w;
+
+			w.show();
+
+			return a.exec();
+		}
+	}
+}
+
+namespace QtBegin {
+	namespace o_ExQtCustomDialog {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
+
+			ExCustomMainWin w;
 
 			w.show();
 

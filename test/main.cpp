@@ -69,3 +69,8 @@ TEST(QtBegin, n_ExQStandardItemModel)
 {
 	QtBegin::n_ExQStandardItemModel::main(0, nullptr);
 }
+
+TEST(QtBegin, o_ExQtCustomDialog)
+{
+	QtBegin::o_ExQtCustomDialog::main(0, nullptr);
+}

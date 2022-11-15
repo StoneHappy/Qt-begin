@@ -45,5 +45,12 @@
         <file>images/ExQStandardItemModel/Image010.jpg</file>
         <file>images/ExQStandardItemModel/Image011.jpg</file>
         <file>images/ExQStandardItemModel/Image012.png</file>
+        <file>images/ExQtCustomDialog/Image001.png</file>
+        <file>images/ExQtCustomDialog/Image002.png</file>
+        <file>images/ExQtCustomDialog/Image003.png</file>
+        <file>images/ExQtCustomDialog/Image004.jpg</file>
+        <file>images/ExQtCustomDialog/Image005.png</file>
+        <file>images/ExQtCustomDialog/Image006.png</file>
+        <file>images/ExQtCustomDialog/Image007.png</file>
     </qresource>
 </RCC>
