@@ -1,4 +1,4 @@
-#ifndef EXQSTANDARDITEMMODEL_H
+ï»¿#ifndef EXQSTANDARDITEMMODEL_H
 #define EXQSTANDARDITEMMODEL_H
 
 #include <QMainWindow>
@@ -20,20 +20,21 @@ public:
     ~ExQStandardItemModel();
 
 private slots:
-    void onCurrentChanged(const QModelIndex& current, const QModelIndex& previous);  //µ±Ç°µ¥Ôª¸ñ·¢Éú±ä»¯Ê±
-    void on_actOpen_triggered();            //´ò¿ªºÍµ¼ÈëÎÄ¼ş£¬²¢ÇÒÔÚplainTextEditÀïÃæÏÔÊ¾
+    void onCurrentChanged(const QModelIndex& current, const QModelIndex& previous);  //å½“å‰å•å…ƒæ ¼å‘ç”Ÿå˜åŒ–æ—¶
+    void on_actOpen_triggered();            //æ‰“å¼€å’Œå¯¼å…¥æ–‡ä»¶ï¼Œå¹¶ä¸”åœ¨plainTextEdité‡Œé¢æ˜¾ç¤º
+    void on_actAppend_triggered();          //åœ¨è¡¨æ ¼çš„æœ€åä¸€è¡Œæ·»åŠ ä¸€è¡Œ
 
 private:
-    void init(QStringList& list);           //´Ólist³õÊ¼»¯Êı¾İÄ£ĞÍ
+    void init(QStringList& list);           //ä»liståˆå§‹åŒ–æ•°æ®æ¨¡å‹
 
 private:
     Ui::ExQStandardItemModel *ui;
 
-    QLabel* m_labCurrFile;                 //µ±Ç°ÎÄ¼ş
-    QLabel* m_labCellPos;                   //µ±Ç°µ¥Ôª¸ñĞĞÁĞºÅ
-    QLabel* m_labCellText;                  //µ±Ç°µ¥Ôª¸ñÊı¾İÄÚÈİ
-    QStandardItemModel* m_model;            //Êı¾İÄ£ĞÍ
-    QItemSelectionModel* m_selectModet;     //Ñ¡ÔñÄ£ĞÍ
+    QLabel* m_labCurrFile;                 //å½“å‰æ–‡ä»¶
+    QLabel* m_labCellPos;                   //å½“å‰å•å…ƒæ ¼è¡Œåˆ—å·
+    QLabel* m_labCellText;                  //å½“å‰å•å…ƒæ ¼æ•°æ®å†…å®¹
+    QStandardItemModel* m_model;            //æ•°æ®æ¨¡å‹
+    QItemSelectionModel* m_selectModet;     //é€‰æ‹©æ¨¡å‹
 };
 
 #endif // EXQSTANDARDITEMMODEL_H

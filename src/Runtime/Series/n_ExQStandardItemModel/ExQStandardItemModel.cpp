@@ -1,24 +1,24 @@
-#include "ExQStandardItemModel.h"
+ï»¿#include "ExQStandardItemModel.h"
 #include "ui_ExQStandardItemModel.h"
 #include <QToolButton>
 #include <QStandardItemModel>
 #include <QFileDialog>
 #include <QTextStream>
 #include "ExDelegate.h"
-#define COLUMN 6  //Êı¾İ±íµÄÁĞÊı
+#define COLUMN 6  //æ•°æ®è¡¨çš„åˆ—æ•°
 
 ExQStandardItemModel::ExQStandardItemModel(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ExQStandardItemModel)
 {
     ui->setupUi(this);
-    setWindowTitle(QString::fromLocal8Bit("QTableViewºÍQStandardItemModelµÄÓÃ·¨"));
+    setWindowTitle(QString::fromLocal8Bit("QTableViewå’ŒQStandardItemModelçš„ç”¨æ³•"));
 
-    ui->toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);     //ÉèÖÃÖ÷¹¤¾ßÀ¸µÄÍ¼±êÑùÊ½·ç¸ñ
+    ui->toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);     //è®¾ç½®ä¸»å·¥å…·æ çš„å›¾æ ‡æ ·å¼é£æ ¼
 
-    m_labCurrFile = new QLabel(QString::fromLocal8Bit("µ±Ç°ÎÄ¼ş£º"), this);                       //ÉèÖÃ×´Ì¬À¸
-    m_labCellPos = new QLabel(QString::fromLocal8Bit("µ±Ç°µ¥Ôª¸ñ£º"), this);
-    m_labCellText = new QLabel(QString::fromLocal8Bit("µ¥Ôª¸ñÄÚÈİ£º"), this);
+    m_labCurrFile = new QLabel(QString::fromLocal8Bit("å½“å‰æ–‡ä»¶ï¼š"), this);                       //è®¾ç½®çŠ¶æ€æ 
+    m_labCellPos = new QLabel(QString::fromLocal8Bit("å½“å‰å•å…ƒæ ¼ï¼š"), this);
+    m_labCellText = new QLabel(QString::fromLocal8Bit("å•å…ƒæ ¼å†…å®¹ï¼š"), this);
     m_labCurrFile->setMinimumWidth(200);
     m_labCellPos->setMinimumWidth(200);
     m_labCellText->setMinimumWidth(200);
@@ -26,80 +26,80 @@ ExQStandardItemModel::ExQStandardItemModel(QWidget *parent) :
     ui->statusbar->addWidget(m_labCellPos);
     ui->statusbar->addWidget(m_labCellText);
 
-    m_model = new QStandardItemModel(2, COLUMN, this);                          //ÉèÖÃÊı¾İÄ£ĞÍ£¬Ò»¿ªÊ¼ÉèÖÃÎªÄ¬ÈÏµÄ2ĞĞ6ÁĞ±íµÄÒ»¸ö±í    m_selectModet = new QItemSelectionModel(m_model, this);                //ÉèÖÃÑ¡ÔñÄ£ĞÍ
-    m_selectModet = new QItemSelectionModel(m_model, this);                //ÉèÖÃÑ¡ÔñÄ£ĞÍ
-    ui->tableView->setModel(m_model);                                      //ÉèÖÃÊı¾İÄ£ĞÍ
-    ui->tableView->setSelectionModel(m_selectModet);                       //ÉèÖÃÑ¡ÔñÄ£ĞÍ
-    ui->tableView->setSelectionMode(QAbstractItemView::ExtendedSelection); //ÉèÖÃÑ¡ÔñÄ£Ê½
-    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);   //ÉèÖÃÑ¡ÔñĞĞÎª
-    connect(m_selectModet, SIGNAL(currentChanged(QModelIndex, QModelIndex)), this, SLOT(onCurrentChanged(QModelIndex, QModelIndex)));  //Ñ¡Ôñµ±Ç°µ¥Ôª¸ñ±ä»¯Ê±µÄĞÅºÅÓë²Û
+    m_model = new QStandardItemModel(2, COLUMN, this);                          //è®¾ç½®æ•°æ®æ¨¡å‹ï¼Œä¸€å¼€å§‹è®¾ç½®ä¸ºé»˜è®¤çš„2è¡Œ6åˆ—è¡¨çš„ä¸€ä¸ªè¡¨    m_selectModet = new QItemSelectionModel(m_model, this);                //è®¾ç½®é€‰æ‹©æ¨¡å‹
+    m_selectModet = new QItemSelectionModel(m_model, this);                //è®¾ç½®é€‰æ‹©æ¨¡å‹
+    ui->tableView->setModel(m_model);                                      //è®¾ç½®æ•°æ®æ¨¡å‹
+    ui->tableView->setSelectionModel(m_selectModet);                       //è®¾ç½®é€‰æ‹©æ¨¡å‹
+    ui->tableView->setSelectionMode(QAbstractItemView::ExtendedSelection); //è®¾ç½®é€‰æ‹©æ¨¡å¼
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);   //è®¾ç½®é€‰æ‹©è¡Œä¸º
+    connect(m_selectModet, SIGNAL(currentChanged(QModelIndex, QModelIndex)), this, SLOT(onCurrentChanged(QModelIndex, QModelIndex)));  //é€‰æ‹©å½“å‰å•å…ƒæ ¼å˜åŒ–æ—¶çš„ä¿¡å·ä¸æ§½
 }
 
 void ExQStandardItemModel::onCurrentChanged(const QModelIndex& current, const QModelIndex& previous)
 {
-    if (current.isValid()) {                                               //µ±Ç°Ä£ĞÍË÷ĞÔÓĞĞ§
-        m_labCellPos->setText(QString::fromLocal8Bit("µ±Ç°µ¥Ôª¸ñ£º%1ĞĞ, %2ÁĞ").arg(current.row()).arg(current.column()));
-        QStandardItem* item = m_model->itemFromIndex(current);             //´ÓÄ£ĞÍË÷Òı»ñµÃItem
-        m_labCellText->setText(QString::fromLocal8Bit("µ±Ç°ÎÄ¼ş£º%1").arg(item->text()));  //ÏÔÊ¾itemµÄÎÄ×ÖÄÚÈİ
+    if (current.isValid()) {                                               //å½“å‰æ¨¡å‹ç´¢æ€§æœ‰æ•ˆ
+        m_labCellPos->setText(QString::fromLocal8Bit("å½“å‰å•å…ƒæ ¼ï¼š%1è¡Œ, %2åˆ—").arg(current.row()).arg(current.column()));
+        QStandardItem* item = m_model->itemFromIndex(current);             //ä»æ¨¡å‹ç´¢å¼•è·å¾—Item
+        m_labCellText->setText(QString::fromLocal8Bit("å½“å‰æ–‡ä»¶ï¼š%1").arg(item->text()));  //æ˜¾ç¤ºitemçš„æ–‡å­—å†…å®¹
 
         QFont font = item->font();
-        ui->actBold->setChecked(font.bold());                              //¸üĞÂactFontBoldµÄcheck×´Ì¬
+        ui->actBold->setChecked(font.bold());                              //æ›´æ–°actFontBoldçš„checkçŠ¶æ€
     }
 }
 
 //action+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//´ò¿ªºÍµ¼ÈëÎÄ¼ş£¬²¢ÇÒÔÚplainTextEditÀïÃæÏÔÊ¾
+//æ‰“å¼€å’Œå¯¼å…¥æ–‡ä»¶ï¼Œå¹¶ä¸”åœ¨plainTextEdité‡Œé¢æ˜¾ç¤º
 void ExQStandardItemModel::on_actOpen_triggered()
 {
     QString currPath = QCoreApplication::applicationDirPath();
-    QString fileName = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("´ò¿ªÒ»¸öÎÄ¼ş"), currPath, QString::fromLocal8Bit("µ¼ÈëÊı¾İÎÄ¼ş(*txt);;ËùÓĞÎÄ¼ş(*.*)"));
+    QString fileName = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("æ‰“å¼€ä¸€ä¸ªæ–‡ä»¶"), currPath, QString::fromLocal8Bit("å¯¼å…¥æ•°æ®æ–‡ä»¶(*txt);;æ‰€æœ‰æ–‡ä»¶(*.*)"));
 
     if (fileName.isEmpty())
         return;
 
     QStringList list;
     QFile file(fileName);
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {                //Ö»¶ÁĞÎÊ½´ò¿ªÎÄ±¾ÎÄ¼ş
-        QTextStream stream(&file);                                         //ÓÃÎÄ±¾Á÷¶ÁÈ¡ÎÄ¼ş
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {                //åªè¯»å½¢å¼æ‰“å¼€æ–‡æœ¬æ–‡ä»¶
+        QTextStream stream(&file);                                         //ç”¨æ–‡æœ¬æµè¯»å–æ–‡ä»¶
         ui->plainTextEdit->clear();
 
-        while (!stream.atEnd()) {                                          //¶ÁÈ¡ÎÄ±¾ÖĞÎÄ±¾µÄÄÚÈİ
+        while (!stream.atEnd()) {                                          //è¯»å–æ–‡æœ¬ä¸­æ–‡æœ¬çš„å†…å®¹
             QString str = stream.readLine();
             ui->plainTextEdit->appendPlainText(str);
             list.append(str);
         }
 
-        file.close();                                                      //¹Ø±Õ
-        m_labCurrFile->setText("µ±Ç°ÎÄ¼ş£º" + fileName);                    //ÉèÖÃ×´Ì¬À¸
+        file.close();                                                      //å…³é—­
+        m_labCurrFile->setText("å½“å‰æ–‡ä»¶ï¼š" + fileName);                    //è®¾ç½®çŠ¶æ€æ 
 
-        ui->actAppend->setEnabled(true);                                   //ÉèÖÃactionµÄEnabledµÄÊôĞÔ
+        ui->actAppend->setEnabled(true);                                   //è®¾ç½®actionçš„Enabledçš„å±æ€§
         ui->actInsert->setEnabled(true);
         ui->actDelete->setEnabled(true);
         ui->actSave->setEnabled(true);
     }
 
-    init(list);                                                            //³õÊ¼»¯.txtµÄÊı¾İ
+    init(list);                                                            //åˆå§‹åŒ–.txtçš„æ•°æ®
 }
 
-//´Ólist³õÊ¼»¯Êı¾İÄ£ĞÍQTableViewÀïÃæ
+//ä»liståˆå§‹åŒ–æ•°æ®æ¨¡å‹QTableViewé‡Œé¢
 void ExQStandardItemModel::init(QStringList& list)
 {
-    int rowCount = list.count();                                           //ÎÄ±¾ĞĞÊı£¬µÚÒ»ĞĞÎª±íÍ·
+    int rowCount = list.count();                                           //æ–‡æœ¬è¡Œæ•°ï¼Œç¬¬ä¸€è¡Œä¸ºè¡¨å¤´
     m_model->setRowCount(rowCount - 1);
 
     QString header = list.at(0);
-    QStringList headerList = header.split(QRegExp("\\s+"), QString::SkipEmptyParts); //Í¨¹ıÒ»¸ö»òÕß¶à¸ö¿Õ¸ñ»òÕßtab°´¼üÇĞ¸î
-    m_model->setHorizontalHeaderLabels(headerList);                       //ÉèÖÃ±íÍ·
+    QStringList headerList = header.split(QRegExp("\\s+"), QString::SkipEmptyParts); //é€šè¿‡ä¸€ä¸ªæˆ–è€…å¤šä¸ªç©ºæ ¼æˆ–è€…tabæŒ‰é”®åˆ‡å‰²
+    m_model->setHorizontalHeaderLabels(headerList);                       //è®¾ç½®è¡¨å¤´
 
-    QStandardItem* item = nullptr;                                        //´Ë´¦¿ªÊ¼£¬ÉèÖÃ±í¸ñÊı¾İ
+    QStandardItem* item = nullptr;                                        //æ­¤å¤„å¼€å§‹ï¼Œè®¾ç½®è¡¨æ ¼æ•°æ®
     QStringList tempList;
     int j = 0;
 
     for (int i = 1; i < rowCount; i++) {
         QString aLineText = list.at(i);
-        tempList = aLineText.split(QRegExp("\\s+"), QString::SkipEmptyParts);//ÕıÔò±í´ïÊ½ÖĞ\sÆ¥ÅäÈÎºÎ¿Õ°××Ö·û£¬°üÀ¨¿Õ¸ñ¡¢ÖÆ±í·û¡¢»»Ò³·ûµÈµÈ, µÈ¼ÛÓÚ[ \f\n\r\t\v]
+        tempList = aLineText.split(QRegExp("\\s+"), QString::SkipEmptyParts);//æ­£åˆ™è¡¨è¾¾å¼ä¸­\såŒ¹é…ä»»ä½•ç©ºç™½å­—ç¬¦ï¼ŒåŒ…æ‹¬ç©ºæ ¼ã€åˆ¶è¡¨ç¬¦ã€æ¢é¡µç¬¦ç­‰ç­‰, ç­‰ä»·äº[ \f\n\r\t\v]
 
-        for (j = 0; j < COLUMN - 1; j++) {                                     //ÉèÖÃÇ°5ÁĞµÄitem
+        for (j = 0; j < COLUMN - 1; j++) {                                     //è®¾ç½®å‰5åˆ—çš„item
 
             if (j == 3) {
                 ExDelegate* itemDelegate = new ExDelegate();
@@ -112,8 +112,8 @@ void ExQStandardItemModel::init(QStringList& list)
 
 
 
-        item = new QStandardItem(tempList.at(j));                          //×îºóÒ»ÁĞµÄitem
-        item->setCheckable(true);                                          //ÉèÖÃÓĞ¼ì²é¿ò
+        item = new QStandardItem(tempList.at(j));                          //æœ€åä¸€åˆ—çš„item
+        item->setCheckable(true);                                          //è®¾ç½®æœ‰æ£€æŸ¥æ¡†
 
         if (tempList.at(j) == "https://www.google.com")
             item->setCheckState(Qt::Unchecked);
@@ -123,6 +123,28 @@ void ExQStandardItemModel::init(QStringList& list)
         m_model->setItem(i - 1, COLUMN - 1, item);
     }
 }
+
+void ExQStandardItemModel::on_actAppend_triggered()
+{
+    QList<QStandardItem*> list;
+    QStandardItem* item;
+
+    for (size_t i = 0; i < COLUMN - 1; i++)
+    {
+        item = new QStandardItem(QString::fromLocal8Bit("æ·»åŠ ä¸€è¡Œ"));
+        list << item;
+    }
+
+    QString str = m_model->headerData(m_model->columnCount() - 1, Qt::Horizontal, Qt::DisplayRole).toString();
+    item = new QStandardItem(str + QString::fromLocal8Bit("æ·»åŠ ä¸€è¡Œ"));
+    item->setCheckable(true);
+    list << item;
+    m_model->insertRow(m_model->rowCount(), list);
+    QModelIndex currIndex = m_model->index(m_model->rowCount() - 1, 0);
+    m_selectModet->clearSelection();
+    m_selectModet->setCurrentIndex(currIndex, QItemSelectionModel::Select);
+}
+
 
 ExQStandardItemModel::~ExQStandardItemModel()
 {
