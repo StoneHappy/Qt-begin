@@ -25,6 +25,13 @@ private slots:
     void on_actAppend_triggered();          //在表格的最后一行添加一行
     void on_actSave_triggered();
     void on_actInsert_triggered();
+    void on_actDelete_triggered();
+    void on_actExit_triggered();
+    void on_actModelData_triggered();
+    void on_actAlignLeft_triggered();       //左对齐
+    void on_actAlignCenter_triggered();     //文本居中
+    void on_actAlingRight_triggered();      //文本右对齐
+    void on_actBold_triggered(bool checked);
 
 private:
     void init(QStringList& list);           //从list初始化数据模型

@@ -207,6 +207,103 @@ void ExQStandardItemModel::on_actInsert_triggered()
     m_selectModet->setCurrentIndex(currIndex, QItemSelectionModel::Select);
 }
 
+void ExQStandardItemModel::on_actDelete_triggered()
+{
+    QModelIndex currIndex = m_selectModet->currentIndex();
+    m_model->removeRow(currIndex.row());
+}
+
+void ExQStandardItemModel::on_actExit_triggered()
+{
+    close();
+}
+
+void ExQStandardItemModel::on_actModelData_triggered()
+{
+    QStandardItem* item;
+    int i = 0, j = 0;
+    QString str = "";
+    ui->plainTextEdit->clear();
+
+    for (i = 0; i < m_model->columnCount(); i++)
+    {
+        item = m_model->horizontalHeaderItem(i);
+        str = str + item->text() + "\t\t";
+    }
+
+    ui->plainTextEdit->appendPlainText(str);
+
+    for (i = 0; i < m_model->rowCount(); i++)
+    {
+        str = "";
+
+        for (j = 0; j < m_model->columnCount(); j++)
+        {
+            item = m_model->item(i, j);
+            str = str + item->text() + "\t\t";
+        }
+        ui->plainTextEdit->appendPlainText(str);
+    }
+}
+
+void ExQStandardItemModel::on_actAlignLeft_triggered()
+{
+    if (!m_selectModet->hasSelection()) return;
+
+    QModelIndexList list = m_selectModet->selectedIndexes();
+
+    for (size_t i = 0; i < list.count(); i++)
+    {
+        QModelIndex index = list.at(i);
+        QStandardItem* item = m_model->itemFromIndex(index);
+        item->setTextAlignment(Qt::AlignLeft);
+    }
+}
+
+void ExQStandardItemModel::on_actAlignCenter_triggered()
+{
+    if (!m_selectModet->hasSelection())
+        return;
+
+    QModelIndexList list = m_selectModet->selectedIndexes();     //获得选中的List<item>
+
+    for (int i = 0; i < list.count(); i++) {
+        QModelIndex index = list.at(i);                          //获取一个模型索引
+        QStandardItem* item = m_model->itemFromIndex(index);
+        item->setTextAlignment(Qt::AlignCenter);                 //设置文本居中
+    }
+}
+//文本右对齐
+void ExQStandardItemModel::on_actAlingRight_triggered()
+{
+    if (!m_selectModet->hasSelection())
+        return;
+
+    QModelIndexList list = m_selectModet->selectedIndexes();
+
+    for (int i = 0; i < list.count(); i++) {
+        QModelIndex index = list.at(i);
+        QStandardItem* item = m_model->itemFromIndex(index);
+        item->setTextAlignment(Qt::AlignRight);
+    }
+}
+
+void ExQStandardItemModel::on_actBold_triggered(bool checked)
+{
+    if (!m_selectModet->hasSelection())
+        return;
+
+    QModelIndexList list = m_selectModet->selectedIndexes();
+
+    for (int i = 0; i < list.count(); i++) {
+        QModelIndex index = list.at(i);
+        QStandardItem* item = m_model->itemFromIndex(index);
+
+        QFont font = item->font();
+        font.setBold(checked);
+        item->setFont(font);
+    }
+}
 
 ExQStandardItemModel::~ExQStandardItemModel()
 {
