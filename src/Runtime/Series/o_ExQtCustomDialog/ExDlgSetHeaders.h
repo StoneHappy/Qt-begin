@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+class QStringListModel;
+
 namespace Ui {
 class ExDlgSetHeaders;
 }
@@ -15,8 +17,13 @@ public:
     explicit ExDlgSetHeaders(QWidget *parent = nullptr);
     ~ExDlgSetHeaders();
 
+    void setHeaderList(QStringList& headers);
+    QStringList headerList();
+
 private:
     Ui::ExDlgSetHeaders *ui;
+
+    QStringListModel* m_model;
 };
 
 #endif // EXDLGSETHEADERS_H

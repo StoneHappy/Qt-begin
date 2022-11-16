@@ -1,4 +1,5 @@
 #include "ExCustomMainWin.h"
+#include "ExDlgSetHeaders.h"
 #include "ui_ExCustomMainWin.h"
 
 #include <QStandardItemModel>
@@ -41,4 +42,29 @@ void ExCustomMainWin::on_currentChanged(const QModelIndex& current, const QModel
 ExCustomMainWin::~ExCustomMainWin()
 {
     delete ui;
+}
+
+void ExCustomMainWin::on_actSetHeader_triggered()
+{
+    if (m_dlgSetHeaders == nullptr)
+        m_dlgSetHeaders = new ExDlgSetHeaders(this);
+
+    if (m_dlgSetHeaders->headerList().count() != m_model->columnCount())
+    {
+        QStringList list;
+
+        for (size_t i = 0; i < m_model->rowCount(); i++)
+        {
+            list.append(m_model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString());
+        }
+        m_dlgSetHeaders->setHeaderList(list);
+    }
+
+    int ret = m_dlgSetHeaders->exec();
+    if (ret == QDialog::Accepted)
+    {
+        QStringList list = m_dlgSetHeaders->headerList();
+        m_model->setHorizontalHeaderLabels(list);
+    }
+
 }

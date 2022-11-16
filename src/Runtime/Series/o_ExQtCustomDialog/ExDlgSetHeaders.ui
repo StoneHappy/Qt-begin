@@ -39,16 +39,24 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btnOk">
           <property name="text">
-           <string>PushButton</string>
+           <string>确定</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../../resources/resources.qrc">
+            <normaloff>:/images/ExQtCustomDialog/Image005.png</normaloff>:/images/ExQtCustomDialog/Image005.png</iconset>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="btnClose">
           <property name="text">
-           <string>PushButton</string>
+           <string>取消</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../../resources/resources.qrc">
+            <normaloff>:/images/ExQtCustomDialog/Image007.png</normaloff>:/images/ExQtCustomDialog/Image007.png</iconset>
           </property>
          </widget>
         </item>
@@ -59,6 +67,41 @@
    </item>
   </layout>
  </widget>
- <resources/>
- <connections/>
+ <resources>
+  <include location="../../../../resources/resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>btnOk</sender>
+   <signal>clicked()</signal>
+   <receiver>ExDlgSetHeaders</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnClose</sender>
+   <signal>clicked()</signal>
+   <receiver>ExDlgSetHeaders</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
