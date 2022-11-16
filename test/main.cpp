@@ -74,3 +74,8 @@ TEST(QtBegin, o_ExQtCustomDialog)
 {
 	QtBegin::o_ExQtCustomDialog::main(0, nullptr);
 }
+
+TEST(QtBegin, p_ExQtMDI)
+{
+	QtBegin::p_ExQtMDI::main(0, nullptr);
+}

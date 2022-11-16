@@ -3,10 +3,10 @@
     "cmake.configureArgs" : [
         "-DCMAKE_PREFIX_PATH=D:/softwares/Qt/5.15.2/msvc2015_64",
         "-DCMAKE_BUILD_TYPE=Debug",
-        "-DDEBUG_ARGUES=--gtest_filter=QtBegin.o_ExQtCustomDialog"
+        "-DDEBUG_ARGUES=--gtest_filter=QtBegin.p_ExQtMDI"
     ],
     // "cmake.generator": "Ninja",
     "cmake.debugConfig": {
-        "args": ["--gtest_filter=QtBegin.o_ExQtCustomDialog"]
+        "args": ["--gtest_filter=QtBegin.p_ExQtMDI"]
     }
 }

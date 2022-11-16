@@ -13,6 +13,7 @@
 #include "m_ExDialog/ExDialog.h"
 #include "n_ExQStandardItemModel/ExQStandardItemModel.h"
 #include "o_ExQtCustomDialog/ExCustomMainWin.h"
+#include "p_ExQtMDI/ExMainWindow.h"
 #include <qapplication.h>
 
 namespace QtBegin {
@@ -233,6 +234,21 @@ namespace QtBegin {
 			QApplication a(argc, argv);
 
 			ExCustomMainWin w;
+
+			w.show();
+
+			return a.exec();
+		}
+	}
+}
+
+namespace QtBegin {
+	namespace p_ExQtMDI {
+		int main(int argc, char* argv[])
+		{
+			QApplication a(argc, argv);
+
+			ExMainWindow w;
 
 			w.show();
 
