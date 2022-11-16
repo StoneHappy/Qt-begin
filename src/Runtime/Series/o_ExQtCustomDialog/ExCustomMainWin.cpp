@@ -1,6 +1,7 @@
 #include "ExCustomMainWin.h"
 #include "ExDlgSetHeaders.h"
 #include "ExDlgLocate.h"
+#include "ExDlgSize.h"
 #include "ui_ExCustomMainWin.h"
 
 #include <QStandardItemModel>
@@ -36,7 +37,14 @@ ExCustomMainWin::ExCustomMainWin(QWidget *parent) :
 
 void ExCustomMainWin::on_currentChanged(const QModelIndex& current, const QModelIndex& previous)
 {
+    if (current.isValid())
+    {
+        QStandardItem* item;
+        item = m_model->itemFromIndex(current);
 
+        m_labCellPos->setText(QString::fromLocal8Bit("当前单元格：%1行，%2列").arg(current.row()).arg(current.column()));
+        m_labCellText->setText(QString::fromLocal8Bit("单元格内容: %1").arg(item->text()));
+    }
 }
 
 
@@ -103,4 +111,23 @@ void ExCustomMainWin::on_actLocate_triggered()
         m_dlglocate->setSpinValue(curIndex.row(), curIndex.column());
     }
     m_dlglocate->show();
+}
+
+void ExCustomMainWin::on_actSetSize_triggered()
+{
+    ExDlgSize* dlgSize = new ExDlgSize(this);
+    Qt::WindowFlags flags = dlgSize->windowFlags();
+    dlgSize->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint);
+    dlgSize->setRowCol(m_model->rowCount(), m_model->columnCount());
+    int ret = dlgSize->exec();
+
+    if (ret == QDialog::Accepted)
+    {
+        int row = dlgSize->getRowCout();
+        int col = dlgSize->getColCount();
+        m_model->setRowCount(row);
+        m_model->setColumnCount(col);
+    }
+
+    delete dlgSize;
 }

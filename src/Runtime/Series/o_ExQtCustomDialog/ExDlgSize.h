@@ -15,6 +15,9 @@ public:
     explicit ExDlgSize(QWidget *parent = nullptr);
     ~ExDlgSize();
 
+    void setRowCol(int row, int col);
+    int getRowCout();
+    int getColCount();
 private:
     Ui::ExDlgSize *ui;
 };

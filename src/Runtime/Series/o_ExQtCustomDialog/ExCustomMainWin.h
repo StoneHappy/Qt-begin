@@ -27,7 +27,7 @@ private slots:
     void on_currentChanged(const QModelIndex& current, const QModelIndex& previous);
     void on_actSetHeader_triggered();
     void on_actLocate_triggered();
-
+    void on_actSetSize_triggered();
 private:
     Ui::ExCustomMainWin *ui;
 
