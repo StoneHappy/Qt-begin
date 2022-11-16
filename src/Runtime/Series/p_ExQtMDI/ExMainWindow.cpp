@@ -60,6 +60,35 @@ void ExMainWindow::on_actPaste_triggered()
     mdi->textPaste();
 }
 
+void ExMainWindow::on_actView_triggered(bool checked)
+{
+    if (checked)
+    {
+        ui->mdiArea->setViewMode(QMdiArea::TabbedView);
+        ui->mdiArea->setTabsClosable(true);
+        ui->actCascade->setEnabled(false);
+        ui->actTile->setEnabled(false);
+    }
+    else
+    {
+        ui->mdiArea->setViewMode(QMdiArea::SubWindowView);
+        ui->actCascade->setEnabled(true);
+        ui->actTile->setEnabled(true);
+    }
+}
+
+void ExMainWindow::on_actCascade_triggered()
+{
+}
+
+void ExMainWindow::on_actTile_triggered()
+{
+}
+
+void ExMainWindow::on_actClose_triggered()
+{
+}
+
 void ExMainWindow::on_actOpen_triggered()
 {
     bool needNew = false;
