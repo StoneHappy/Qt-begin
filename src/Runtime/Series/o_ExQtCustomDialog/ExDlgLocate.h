@@ -15,6 +15,8 @@ public:
     explicit ExDlgLocate(QWidget *parent = nullptr);
     ~ExDlgLocate();
 
+    void setSpinRange(int rowCount, int colCount);
+    void setSpinValue(int rowNo, int colNo);
 private:
     Ui::ExDlgLocate *ui;
 };

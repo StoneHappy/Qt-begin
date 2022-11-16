@@ -1,5 +1,6 @@
 #include "ExCustomMainWin.h"
 #include "ExDlgSetHeaders.h"
+#include "ExDlgLocate.h"
 #include "ui_ExCustomMainWin.h"
 
 #include <QStandardItemModel>
@@ -67,4 +68,21 @@ void ExCustomMainWin::on_actSetHeader_triggered()
         m_model->setHorizontalHeaderLabels(list);
     }
 
+}
+
+void ExCustomMainWin::on_actLocate_triggered()
+{
+    ui->actLocate->setEnabled(false);
+    m_dlglocate = new ExDlgLocate(this);
+
+    Qt::WindowFlags flags = m_dlglocate->windowFlags();
+    m_dlglocate->setWindowFlags(flags | Qt::WindowStaysOnTopHint);
+
+    m_dlglocate->setSpinRange(m_model->rowCount(), m_model->columnCount());
+    QModelIndex curIndex = m_seleModel->currentIndex();
+    if (curIndex.isValid())
+    {
+        m_dlglocate->setSpinValue(curIndex.row(), curIndex.column());
+    }
+    m_dlglocate->show();
 }
