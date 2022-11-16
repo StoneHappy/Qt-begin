@@ -17,8 +17,17 @@ public:
 
     void setSpinRange(int rowCount, int colCount);
     void setSpinValue(int rowNo, int colNo);
+
+private slots:
+    void on_btnSetText_clicked();
+    void on_btnClose_clicked();
+
 private:
     Ui::ExDlgLocate *ui;
+
+protected:
+    virtual void closeEvent(QCloseEvent* event) override;
+    virtual void showEvent(QShowEvent* evnet) override;
 };
 
 #endif // EXDLGLOCATE_H

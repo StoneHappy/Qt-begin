@@ -19,6 +19,10 @@ public:
     explicit ExCustomMainWin(QWidget *parent = nullptr);
     ~ExCustomMainWin();
 
+    void setACellText(int row, int col, QString text);
+    void setActLocateEnable(bool enable);
+    void setDlgLocateNull();
+
 private slots:
     void on_currentChanged(const QModelIndex& current, const QModelIndex& previous);
     void on_actSetHeader_triggered();

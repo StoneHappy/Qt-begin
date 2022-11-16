@@ -45,6 +45,24 @@ ExCustomMainWin::~ExCustomMainWin()
     delete ui;
 }
 
+void ExCustomMainWin::setACellText(int row, int col, QString text)
+{
+    QModelIndex index = m_model->index(row, col);
+    m_seleModel->clearSelection();
+    m_seleModel->setCurrentIndex(index, QItemSelectionModel::Select);
+    m_model->setData(index, text, Qt::DisplayRole);
+}
+
+void ExCustomMainWin::setActLocateEnable(bool enable)
+{
+    ui->actLocate->setEnabled(enable);
+}
+
+void ExCustomMainWin::setDlgLocateNull()
+{
+    m_dlglocate = nullptr;
+}
+
 void ExCustomMainWin::on_actSetHeader_triggered()
 {
     if (m_dlgSetHeaders == nullptr)
