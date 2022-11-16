@@ -15,6 +15,10 @@ public:
     explicit ExMainWindow(QWidget *parent = nullptr);
     ~ExMainWindow();
 
+private slots:
+    void on_actOpen_triggered();
+    void on_actNew_triggered();
+
 private:
     Ui::ExMainWindow *ui;
 };
