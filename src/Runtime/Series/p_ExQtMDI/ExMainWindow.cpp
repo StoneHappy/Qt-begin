@@ -31,6 +31,35 @@ void ExMainWindow::on_actNew_triggered()
     ui->actFont->setEnabled(true);
 }
 
+void ExMainWindow::on_actQuit_triggered()
+{
+    close();
+}
+
+void ExMainWindow::on_actFont_triggered()
+{
+    ExMDI* mdi = (ExMDI*)ui->mdiArea->activeSubWindow()->widget();
+    mdi->setEditFont();
+}
+
+void ExMainWindow::on_actCut_triggered()
+{
+    ExMDI* mdi = (ExMDI*)ui->mdiArea->activeSubWindow()->widget();
+    mdi->textCut();
+}
+
+void ExMainWindow::on_actCopy_triggered()
+{
+    ExMDI* mdi = (ExMDI*)ui->mdiArea->activeSubWindow()->widget();
+    mdi->textCopy();
+}
+
+void ExMainWindow::on_actPaste_triggered()
+{
+    ExMDI* mdi = (ExMDI*)ui->mdiArea->activeSubWindow()->widget();
+    mdi->textPaste();
+}
+
 void ExMainWindow::on_actOpen_triggered()
 {
     bool needNew = false;

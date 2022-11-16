@@ -16,6 +16,11 @@ public:
     ~ExMDI();
     void loadFromFile(const QString& filename);
     bool isFileOpended();
+
+    void setEditFont();
+    void textCut();
+    void textCopy();
+    void textPaste();
 private:
     Ui::ExMDI *ui;
     bool    m_fileOpened;   //true 打开；false 未打开

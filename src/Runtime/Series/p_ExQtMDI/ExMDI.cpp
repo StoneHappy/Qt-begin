@@ -3,6 +3,7 @@
 
 #include <QTextStream>
 #include <QFileInfo>
+#include <QFontDialog>
 
 ExMDI::ExMDI(QWidget *parent) :
     QWidget(parent),
@@ -37,4 +38,27 @@ void ExMDI::loadFromFile(const QString& filename)
 bool ExMDI::isFileOpended()
 {
     return m_fileOpened;
+}
+
+void ExMDI::setEditFont()
+{
+    QFont font = ui->plainTextEdit->font();
+    bool ok;
+    font = QFontDialog::getFont(&ok, font);
+    ui->plainTextEdit->setFont(font);
+}
+
+void ExMDI::textCut()
+{
+    ui->plainTextEdit->cut();
+}
+
+void ExMDI::textCopy()
+{
+    ui->plainTextEdit->copy();
+}
+
+void ExMDI::textPaste()
+{
+    ui->plainTextEdit->paste();
 }
