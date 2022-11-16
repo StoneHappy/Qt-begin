@@ -79,14 +79,17 @@ void ExMainWindow::on_actView_triggered(bool checked)
 
 void ExMainWindow::on_actCascade_triggered()
 {
+    ui->mdiArea->cascadeSubWindows();
 }
 
 void ExMainWindow::on_actTile_triggered()
 {
+    ui->mdiArea->tileSubWindows();
 }
 
 void ExMainWindow::on_actClose_triggered()
 {
+    ui->mdiArea->closeAllSubWindows();
 }
 
 void ExMainWindow::on_actOpen_triggered()
